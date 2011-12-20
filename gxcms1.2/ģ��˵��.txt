@@ -1,0 +1,40 @@
+广告位说明
+-------------------------------------------------------------
+{:get_cms_ads('index-96090')} 首页通栏广告位1  宽960 高90
+{:get_cms_ads('index-96090-2')} 首页通栏广告位2  宽960 高90
+{:get_cms_ads('right-250250')} 内容页右侧广告 宽250 高250
+{:get_cms_ads('play-left')} 播放页左侧广告 宽160 高480
+{:get_cms_ads('play-right')} 播放页右侧广告 宽160 高480
+
+AJAX调用数据说明(容器ID),以达到在静态模式下数据实时更新等作用
+-------------------------------------------------------------
+video_channel.html video_list.html（栏目频道页，栏目列表页）
+<dd id="areahtml">{$area}</dd> 出产地区列表
+<dd id="yearhtml">{$year}</dd> 上映年代列表
+
+video_detail.html（影视内容详情页）
+<span id="Scorenum">{$score}</span> 影片评分值
+<span id="Scoreer">{$scoreer}</span> 影片评分人数
+<span id="hot_video" href="需引用的数据URL链接"></span> 同类热门推荐
+<div id="Comments"></div> 调用影片评论插件
+<div id="ckepop" class="jia">...</div> 社区分享插件(分享到博客)
+
+video_play.html（影视播放页）
+<span id="Score">{$score}</span> 影片评分操作效果(鼠标划过评分)
+<span id="Scorenum">{$score}</span> 影片评分值
+<span id="Scoreer">{$scoreer}</span> 影片评分人数
+<span id="hot_video" href="需引用的数据URL链接"></span> 同类热门推荐
+
+info_detail.html(文章内容页)
+<span id="hot_info" href="需引用的数据URL链接">Loading...</span>  同类热门推荐
+
+默认高亮CSS样式说明
+-------------------------------------------------------------
+.Year{} 当前年代筛选结果的关键字 
+.Letter{}  当前字母筛选结果的关键字
+.Area{}  当前地区筛选结果的关键字
+.Class{}  当前分类筛选结果的关键字
+.kw-hilight{}  搜索结果关键字
+
+{__NOTOKEN__}
+{__TOKEN__}

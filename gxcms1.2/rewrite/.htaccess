@@ -1,0 +1,19 @@
+# 将 RewriteEngine 模式打开
+RewriteEngine On
+
+# 如果程序放在子目录中，请将 / 修改为 /子目录/
+RewriteBase /
+
+# Rewrite 系统规则请勿修改
+RewriteRule ^video/search/(.*)$ index.php\?s=video/search/$1
+RewriteRule ^list/(.*)$ index.php\?s=video/lists/id/$1
+RewriteRule ^movie/(.*)$ index.php\?s=video/detail/id/$1
+RewriteRule ^player/(.*)$ index.php\?s=video/play/id/$1
+RewriteRule ^info/search/(.*)$ index.php\?s=info/search/$1
+RewriteRule ^newslist/(.*)$ index.php\?s=info/lists/id/$1
+RewriteRule ^news/(.*)$ index.php\?s=info/detail/id/$1
+RewriteRule ^special/(.*)$ index.php\?s=special/$1
+RewriteRule ^guestbook/(.*)$ index.php\?s=guestbook/$1
+RewriteRule ^top10/(.*)$ index.php\?s=top10/$1
+RewriteRule ^my/(.*)$ index.php\?s=my/$1
+RewriteRule ^map/lists/(.*)$ index.php\?s=map/lists/$1

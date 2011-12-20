@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+<script language="javascript">
+$(document).ready(function(){
+	$('.top_nav>li:last').addClass('nobrd');
+	$('.top_nav>li>a').click(function(){
+		id = $(this).attr('id');
+		$('.top_nav>li').removeClass('cur');
+		$('#menu'+id).addClass('cur');
+		$('.hot').hide();
+		$('#hot'+id).show();
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+<include file="header" />
+<div class="box">
+<div class="left_col">
+  <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+    <ul class="top_nav">
+    	<gxcms name="menu"><eq name="menu.mid" value="1">
+    	<li id="menu{$menu.id}" <eq name="i" value="1">class="cur"</eq>><a onfocus="this.blur();" href="javascript:void(0)" id="{$menu.id}">{$menu.cname}</a></li>
+    	</eq></gxcms>
+    </ul>
+    </div></div>
+  <div class="btmbrd"></div> 
+</div>
+<div class="right_col">
+    <div class="news_box bd">
+    <span class="tl"></span><span class="tr"></span>
+<gxcms name="menu"><eq name="menu.mid" value="1">   
+    <div class="ct hot" id="hot{$menu.id}" <neq name="i" value="1">style="display:none"</neq>>
+        <div class="hd"><h3>{:get_channel_name($menu['id'])}总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+            <gxcms name="video" cid="'.$menu['id'].'" limit="50" order="hits desc">
+              <tr>
+                <td>{$i}</td>
+                <td class="name"><a href="{$video.readurl}" target="_blank">{$video.title|get_replace_html=0,9}</a></td>
+                <td>{$video.hits|number_format}</td>
+                <td class="score">{$video.score}</td>
+                <td>{$video.addtime|get_color_date='Y-m-d',###}</td>
+              </tr>
+              <if condition="$i neq 50">
+                <if condition="$i%10 eq 0">
+                    <td colspan="5" class="line">&nbsp;
+                  </tr>
+                </if>
+              </if>
+            </gxcms>
+          </table>
+        </div>
+    </div>
+</eq></gxcms>    
+    <span class="bl"></span><span class="br"></span> 
+    </div>
+</div>
+</div>
+<include file="footer" />
+</div>
+</body>
+</html>

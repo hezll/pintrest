@@ -1,0 +1,33 @@
+/*系统AJAX模块，容器ID与Class，注意大小写，如需修改(可以直接编辑该文件或者在template.css里重定义)*/
+/*用户信息*/
+#Login{}
+#Login .username{}
+
+/*评分星级*/
+#Score{display:inline-block;width:95px; position:relative}
+#Score span{float:left; width:19px; height:18px; cursor:pointer}
+#Score .all{background:url(../images/home/star_vote.gif) repeat;}
+#Score .half{background:url(../images/home/star_vote.gif) 20px 0 repeat;}
+#Score .none{background:url(../images/home/star_vote.gif) 41px 0 repeat;}
+#Scorenum{font:bold 18px Arial;color:#e02e2e;}
+#Scoreer{ font-size:14px; color:#999}
+#Scoretitle{display:none;position:absolute;background:#FFFFFF;border:1px solid #E4E4E4;height:24px;line-height:24px;text-align:center;color:#FF0000;filter:alpha(opacity=80);opacity:0.8;}
+
+/*评论列表*/
+#Comments{}
+#Comments h6{}
+#Comments .list{}
+#Comments .page{}
+#Comments .form{}
+
+
+/*history观看记录*/
+.his{Position:relative;padding:10px;}
+.popup1 {position:absolute;padding:3px ;Z-INDEX: 1000;FILTER: alpha(opacity=95); font-family: Verdana,Arial,Helvetica,sans-serif;
+         background:#fff;border: 1px solid #9EBEDE;zoom:1;}
+#mnuArtStyles {margin-left:-135px;_margin-left:-345px;*margin-left:-133px; overflow: hidden;width:197px;display:inline;}
+#history{font-size:12px;line-height:30px;}
+#history a{font-size:12px;color:#0082cb;display: inline-block;margin:0px;padding:0 6px;}
+#history .list{border-bottom:1px dashed #ececec;}
+#history .list:hover{background:#efefef;}
+#history .title{width:120px;text-align:left;}

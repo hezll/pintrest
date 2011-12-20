@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>消费模式转换-{$webname}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/user.css'>
+</head>
+<include file="top" />
+<div class="show">
+<div class="left">
+	<include file="left" />
+</div>
+<div class="user">
+    <h3>我的消费模式</h3> 
+    <ul style="line-height:30px">
+    <li>用户帐号：{$username}</li>
+    <li>用户积分：{$money}</li>
+ 	<li>消费模式：<span style="font-weight:bold; color:red"><eq name="pay" value="1">包月<else />扣点</eq></span></li> 
+    <eq name="pay" value="1">  
+    <li>消费说明：在有效期内无限次观看收费影片</li>
+    <li>到期时间：{$duetime|get_color_date='Y-m-d H:i:s',###}</li>
+    <else />
+    <li>消费说明：每次观看收费影片将扣除{&user_money_play}点</li>
+    <li>升级说明：1：包月有效期限为30天 2：升级为包月用户需要使用<span style="font-weight:bold; color:red">{&user_money_change}</span>积分</li>
+    <li style="padding-top:15px;list-style:none"><form action="?s=User/Changeupdate" method="post"><input name="id" type="hidden" value="{$id}" /><input class="bginput" name="" type="submit" value="我要包月" style="cursor:pointer"/></form></li>
+    </eq>    
+    </ul> 
+</div>	
+</div>
+</body>
+</html>

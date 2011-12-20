@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户中心-{$webname}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/user.css'>
+</head>
+<body>
+<include file="top" />
+<div class="show">
+<div class="left">
+	<include file="left" />
+</div>
+<div class="user">
+	<h3>帐号资料</h3>
+    <ul class="face"><img src="{$face|default='./views/images/user/face.jpg'}" /></ul>
+    <ul class="readright">
+    <li>用户账号：{$username|htmlspecialchars}</li>
+    <li>电子邮箱：{$email|htmlspecialchars}</li>
+    <li>用户积分：{$money}</li>
+    <li>消费模式：<span style="font-weight:bold;color:red"><eq name="pay" value="1">包月<else />扣点 (<a href="?s=User/Changepay">我要包月</a>)</eq></span></li>
+    </ul>
+    <h3>详细信息</h3>
+    <ul class="readmore">
+    <li>联系 QQ：{$qq|default="未填写"}</li>
+    <li>登录次数：{$lognum}</li>
+ 	<li>用户状态：<eq name="status" value="1">正常<else /><font color="red">锁定</font></eq></li>   
+    <li>密保问题：{$question|htmlspecialchars}</li>
+    <li>包月期限：{$duetime|date='Y-m-d H:i:s',###}</li>
+    <li>注册时间：{$jointime|date='Y-m-d H:i:s',###}</li>
+    <li>最近登录：{$logtime|date='Y-m-d H:i:s',###}</li>
+    <li>最近登录IP：{$logip}</li>
+    </ul>   
+</div> 
+</div>
+</body>
+</html>

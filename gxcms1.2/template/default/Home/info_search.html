@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper">
+<include file="header" />
+<div class="box"><span>您现在所在的位置：</span>{$navtitle}</div>
+<div class="box">
+  <div class="left_col">
+  	<!--热门资讯排行 开始-->
+    <div class="topbrd"></div>
+    <div class="bd">
+      <div class="ct">
+        <div class="hd">
+          <h3>本周热门资讯</h3>
+         </div>
+        <ul class="top">
+          <gxcms name="info" limit="10" order="hits desc" time="7">
+            <li <lt name="i" value="4">class="b"</lt>>
+              <em>{$i}</em><a href="{$info.readurl}" target="_blank" title="{$info.title}">{$info.title|get_replace_html=0,20}</a></li>
+          </gxcms>
+        </ul>
+      </div>
+      </div>
+      <div class="btmbrd"></div>
+      <!--热门资讯排行 结束-->
+  </div>
+  <div class="right_col">
+  	<div class="news_search_box bd"><span class="tl"></span><span class="tr"></span>
+        <div class="ct">
+        <gt name="count" value="0">
+          <div class="news_search_total">共找到<span class="kw">"{$wd}"</span>的<span class="kw">{$count}</span>个资讯搜索结果</div>
+          <ul class="news_search_list">
+          <gxsearch name="info" limit="10" order="'.$order.'" mod="6"><li><a href="{$info.readurl}" target="_blank">{$info.title|get_replace_html=0,30}</a><span>{$info.addtime|get_color_date='Y-m-d',###}</span>
+            <p>{$info.remark}…<a href="{$info.readurl}">[详情]</a></p></li>
+          </gxsearch>
+          </ul>
+          <if condition="$count gt 10"><div class="pages">{$pages}</div></if>
+        <else />
+        	<div style="height:200px; line-height:200px; text-align:center">未找到与"<span class="kw-hilight">"{$keyword}"</span>"相关的资讯，请给我们留言!</div>
+        </gt>         
+        </div>
+        <span class="bl"></span><span class="br"></span> </div>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

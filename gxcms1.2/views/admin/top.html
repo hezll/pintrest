@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>头文件-{&web_name}</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_top.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+	$("#delcache").click(function(){
+		$ajaxurl = $(this).attr('href');
+		$.get($ajaxurl,null,function(data){
+			$("#cache").show();
+			$("#cache").html(' <font color=#ff0000>'+data+'</font>');
+			window.setTimeout(function(){
+				$("#cache").hide();
+			},2000);
+		});
+		return false;
+	});
+	$("#cache").click(function(){
+		$("#cache").hide();
+		return false;
+	});
+});
+function left(url){
+	parent.left.show(url);
+}
+</script>
+</HEAD>
+<body>
+<div class="topnav">
+  <div class="sitenav">
+    <div class=welcome>你好：<span class="username">{@user} </span>，欢迎使用{&cms_name}。 </div>
+    <div class=sitelink><a href="?s=admin/index" target="_parent">后台首页</a> | <a href="./" target="_blank">网站主页</a> | <a href="{&cms_url}" target="_blank">官方论坛</a> | <a class="top-txt" href="?s=Admin/Cache/Del" target="frmright" id="delcache">更新缓存</a><a id="cache"></a></div>
+  </div>
+  <div class="leftnav">
+    <ul>
+      <li class="navleft"></li>
+      <li id="d1" style="margin-left: -1px"><a href="?s=Admin/Config/Conf/id/web" target="right" onClick="left('?s=Admin/Index/Left/id/config');">系统设置</a></li>
+      <li id="d2"><a href="?s=Admin/Video/Show" target="right" onClick="left('?s=Admin/Index/Left/id/content');">内容管理</a></li>
+      <li id="d3"><a href="?s=Admin/Collect/Show" target="right" onClick="left('?s=Admin/Index/Left/id/collect');">采集管理</a></li>
+      <li id="d4"><a href="?s=Admin/Html/Show" target="right" onClick="left('?s=Admin/Index/Left/id/html');">静态生成</a></li>
+      <li id="d5"><a href="?s=Admin/User/Show" target="right" onClick="left('?s=Admin/Index/Left/id/user');">用户管理</a></li>
+      <li id="d6"><a href="?s=Admin/Tpl/Show" target="right" onClick="left('?s=Admin/Index/Left/id/tpl');">模板管理</a></li>
+      <li id="d7"><a href="?s=Admin/Data/Showtable" target="right" onClick="left('?s=Admin/Index/Left/id/data');">数据库管理</a></li>
+      <li id="d8"><a href="?s=Admin/Cache/Show" target="right" onClick="left('?s=Admin/Index/Left/id/tool');">扩展工具</a></li>
+      <li id="d9" style="margin-right: -1px"><a href="?s=admin/login/logout" target="_parent">注销登录</a></li>
+      <li class="navright"></li>
+    </ul>
+  </div>
+</div>
+</body>
+</HTML>

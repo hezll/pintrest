@@ -1,0 +1,89 @@
+IIS6伪静态规则(需安装rewrite2.x组件)
+httpd.ini 已经写好,只需要您的主机支持即可(请将rewrite目录下的httpd.ini移动到根目录)
+
+Apache伪静态规则(如果你的主机不支持,请删除该文件)
+.htaccess 已经写好,只需要您的主机支持即可(请将rewrite目录下的.htaccess移动到根目录)
+
+Nginx伪静态规则
+rewrite ^(.*)/video/search/(.*)$ $1/index.php?s=video/search/$2;
+rewrite ^(.*)/list/(.*)$ $1/index.php?s=video/lists/id/$2;
+rewrite ^(.*)/movie/(.*)$ $1/index.php?s=video/detail/id/$2;
+rewrite ^(.*)/player/(.*)$ $1/index.php?s=video/play/id/$2;
+rewrite ^(.*)/info/search/(.*)$ $1/index.php?s=info/search/$2;
+rewrite ^(.*)/newslist/(.*)$ $1/index.php?s=info/lists/id/$2;
+rewrite ^(.*)/news/(.*)$ $1/index.php?s=info/detail/id/$2;
+rewrite ^(.*)/special/(.*)$ $1/index.php?s=special/$2;
+rewrite ^(.*)/guestbook/(.*)$ $1/index.php?s=guestbook/$2;
+rewrite ^(.*)/top10/(.*)$ $1/index.php?s=top10/$2;
+rewrite ^(.*)/my/(.*)$ $1/index.php?s=my/$2;
+rewrite ^(.*)/map/lists/(.*)$ $1/index.php?s=map/lists/$2;
+
+lighttpd的rewrite(伪静态)规则如下
+url.rewrite-once = (
+"^/video/search/(.+)$" => "index.php?s=video/search/$1",
+"^/list/(.+)$" => "index.php?s=video/lists/id/$1",
+"^/movie/(.+)$" => "index.php?s=video/detail/id/$1",
+"^/player/(.+)$" => "index.php?s=video/play/id/$1",
+"^/info/search/(.+)$" => "index.php?s=info/search/$1",
+"^/newslist/(.+)$" => "index.php?s=info/lists/id/$1",
+"^/news/(.+)$" => "index.php?s=info/detail/id/$1",
+"^/special/(.+)$" => "index.php?s=/special/$1",
+"^/guestbook/(.+)$" => "index.php?s=/guestbook/$1",
+"^/top10/(.+)$" => "index.php?s=top10/$1",
+"^/my/(.+)$" => "index.php?s=/my/$1",
+"^/map/lists/(.+)$" => "index.php?s=map/lists/$1",
+)
+
+iis7用户请直接导航.htaccess或者将以下规则添加到web.config
+<rewrite>
+	<rules>
+		<rule name="已导入的规则 1">
+			<match url="^video/search/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=video/search/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 2">
+			<match url="^info/search/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=info/search/{R:1}" appendQueryString="false" />
+		</rule>		
+		<rule name="已导入的规则 3">
+			<match url="^list/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=video/lists/id/{R:1}" appendQueryString="false" />
+		</rule>			
+		<rule name="已导入的规则 4">
+			<match url="^movie/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=video/detail/id/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 5">
+			<match url="^player/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=video/play/id/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 6">
+			<match url="^newslist/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=info/lists/id/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 7">
+			<match url="^news/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=info/detail/id/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 8">
+			<match url="^special/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=special/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 9">
+			<match url="^guestbook/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=guestbook/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 10">
+			<match url="^top10/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=top10/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 11">
+			<match url="^my/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=my/{R:1}" appendQueryString="false" />
+		</rule>
+		<rule name="已导入的规则 12">
+			<match url="^map/lists/(.*)$" ignoreCase="false" />
+			<action type="Rewrite" url="index.php\?s=map/lists/{R:1}" appendQueryString="false" />
+		</rule>		
+	</rules>
+</rewrite>

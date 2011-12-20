@@ -1,0 +1,11 @@
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery_jqmodal.js"></script>
+<link rel='stylesheet' type='text/css' href='./views/css/jquery_jqmodal.css'>
+<style>#dia_title{height:25px;line-height:25px}.jqmWindow{height:200px;}</style>
+<div class="jqmWindow" id="dialog">
+<div id="dia_title"><span class="jqmTitle"></span><a href="javascript:void(0)" class="jqmClose" title="关闭窗口"></a></div>
+<div id="dia_content"></div>
+</div>
+<script language="JavaScript" type="text/javascript">
+//弹出浮动层 $('#dialog').jqm({modal: true, trigger: 'a.showDialog'});
+$('#dialog').jqm({modal: false, trigger: '#window' , opacity:'0.1'});
+</script>

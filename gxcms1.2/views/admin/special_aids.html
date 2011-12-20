@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>专题收录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="5" cellspacing="1">
+<volist name="list_info" id="gxcms">
+<tr>
+<td height="20" style="width:60px;text-align:left">{$gxcms.id}</td>
+<td class="td lt"><span style="color:#666">{$gxcms.cid|get_channel_name}</span>  {:get_color_title(htmlspecialchars(msubstr($gxcms['title'].$gxcms['intro'],0,30)),$gxcms['color'])}</td>
+<td width="50" class="ct"><a href="?s=Admin/Special/Showinfo/id/{.id}/add/2/key/{$gxcms.id}" target="mids">移除</a></td>
+</volist>
+</table>
+</body>
+</html>

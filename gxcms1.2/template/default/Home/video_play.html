@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$keywords}{$keywords}">
+<meta name="description" content="{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+<script language="JavaScript" type="text/javascript" src="{$tplpath}template.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var name='{$title}';
+    var num='{$playname}';
+	var url=window.location.href;
+    CheckAdd(name,'gxhis',url,num)
+});
+</script>
+</head>
+<body>
+<div class="mov_play_box">
+  <div id="play_header">
+    <div title="{$webname}" class="play_logo"></div>
+    <div class="play_nav">
+      <a href="{$webpath}">首页</a>
+      <gxcms name="menu"><a onfocus="this.blur();" href="{$menu.showurl}" <if condition="($menu['id'] eq $cid) or ($menu['id'] eq $pid)">class="cur"</if>>{$menu.cname}</a></gxcms><span>|</span> 
+      <a href="{$topurl}"<if condition="check_model('top10') eq 1">class="cur"</if>>排行</a>
+      <a href="{b$specialurl}" <if condition="check_model('special') eq 1">class="cur"</if>>专题</a>
+    </div>
+    <div class="play_search">
+      <form action="{$webpath}index.php?s=video/search" method="post" id="search" name="search">{__NOTOKEN__}
+        <input type="text" value="请输入关键字" onfocus="if(this.value=='请输入关键字'){this.value='';}" id="wd" name="wd" autocomplete="off" maxlength="35">
+        <button type="submit" class="search_bt"><span>搜索</span></button>
+      </form>
+    </div>
+    <if condition="C('user_register') eq 1"><div id="Login" class="play_login"></div></if>
+  </div>
+</div>
+<!--电影播放区域开始-->
+<div class="mplay-bg">
+  <div class="play-area">
+    <div id="play-box">
+    <div class="left">{:get_cms_ads('play-left')}</div>
+    <div class="center">
+      <div class="play-title" style="width:{$playwidth}px;">正在播放：{$title} {$playname}</div>
+      {$player}
+    </div>
+    <div class="right">{:get_cms_ads('play-right')}</div>
+    </div>
+    <div class="play-list-box">
+      <div class="play_list">
+        <div class="split-clip">分集：</div>
+        <div class="split-list-box">
+          <ul class="split-list">
+            <gxfor name="playlist" id="video">
+            <li> <a href="{$video.playurl}" <eq name="video.playname" value="$playname">style="color:#2777b0;"</eq>>{$video.playname|get_replace_html=0,5}</a> </li>
+            <eq name="i" value="54"></ul><ul id="all-plist" class="split-list" style="display:none;"></eq>
+            </gxfor>
+          </ul><gt name="count" value="54"><div id="pmoreContain" class="play-list-right"><a id="plMore">展开列表</a></div></gt>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--同类推荐-->
+<div class="mov_play_box">
+  <div class="mov_play_l_box">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd">
+          <h3><a href="{$showurl}">{$cname}推荐</a></h3>
+        </div>
+        <ul class="mov_pic_list">
+          <span id="hot_video" href="{$webpath}index.php?s=my/show/id/hot_video/cid/{$cid}/limit/10">Loading...</span>
+        </ul>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+    <div class="blank"></div>
+    <!--影片评论-->
+  <if condition="C('user_comment') eq 1">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+      	<div class="hd"><h3>影片评论</h3></div>
+        <div id="Comments"></div>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+      </if>
+  </div>
+  <div class="mov_play_r_box">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="play-rating">
+              <include file="system_score" />
+        </div>
+        <div class="info">
+          <a href="{$readurl}"><img src="{$picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" width="98" height="140" /></a> 
+          <span class="mv-title" title="{$title}"> <a href="{$readurl}" title="{$title}{$playname}">{$title|get_replace_html=0,7}</a></span>
+          <p>主演：<notempty name="actor">{$actor|get_replace_html=0,7|get_actor_url}<else />未知</notempty></p>
+          <p>导演：<notempty name="director">{$director|get_replace_html=0,7|get_actor_url}<else />未知</notempty></p>
+          <p>地区：{$area|default='未知'} </p>
+          <p>上映年份：{$year|default='未知'} </p>
+          <p>更新日期：{$addtime|date='Y-m-d',###}</p>
+        </div>
+        <div class="intro">
+          <p class="title">剧情介绍：</p>
+          <div class="intro_cont">{$content|get_replace_html=0,200}</div>
+        </div>
+      </div>
+    <span class="bl"></span><span class="br"></span></div>
+  </div>
+</div>
+{$inserthits}
+<include file="footer" />
+</body>
+</html>

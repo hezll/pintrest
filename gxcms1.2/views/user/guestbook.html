@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的留言－{$webname}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/user.css'>
+</head>
+<body>
+<include file="top" />
+<div class="show">
+<div class="left">
+	<include file="left" />
+</div>
+<div class="user">
+    <h3><span style="float:right">共{$count_guestbook}条留言</span>我的留言</h3> 
+    <gxfor name="list_guestbook" id="gxcms">
+    <ul style="margin-bottom:10px">
+    <li>留言内容：<span style="font-size:12px;color:#333">{$gxcms.content|htmlspecialchars|remove_xss}<eq name="gxcms.status" value="1"><else />[<font color="red">未审核</font>]</eq></span></li>
+    <notempty name="gxcms.recontent">
+    <li style="color:#999999">管理回复：<span style="font-size:12px">{$gxcms.recontent}</span></li>
+    </notempty>
+    </ul> 
+    </gxfor> 
+    <ul class="pages"><notempty name="list_guestbook"><div class="comm-pager">{$pages}</div><else />没有发表留言。</notempty></ul>
+</div>	
+</div>
+</body>
+</html>

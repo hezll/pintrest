@@ -1,0 +1,31 @@
+<script language="JavaScript" type="text/javascript" src="{$tplpath}template.js"></script>
+<div class="header">
+  <div class="top">
+    <div title="{$webname}" class="logo"></div>
+    <if condition="C('user_register') eq 1"><div id="Login" class="login"></div></if>
+    <div class="control"><a href="{$rssurl}">RSS订阅</a>&nbsp;|&nbsp;<a href="javascript:void(0)" id="fav">收藏本站</a>&nbsp;|&nbsp;<a href="{$guestbookurl}">留言反馈</a>&nbsp;|&nbsp;<span class="his"  id="ggg" onmouseover="fnDisplayMenu(this,'mnuArtStyles');" onmouseout="fnHideMenu('mnuArtStyles'); fnRemoveHighlight('mnuArtStyles');" ><a class="headerMnuLink" id="mnuArtStylesLink" href="javascript:void(0);">播放记录</a></span></div>
+
+    <div class="popup1" id="mnuArtStyles"  style="display:none" onmouseover="fnDisplayMenu2($('#mnuArtStylesLink'),'mnuArtStyles');" onmouseout="fnHideMenu('mnuArtStyles'); fnRemoveHighlight('mnuArtStyles');" >
+      <div id="history">
+      </div>
+   </div>
+
+  </div>
+  <div class="nav"><a href="{$webpath}" <if condition="$model eq 'index'">class="cur"</if>>首页</a>
+    <gxcms name="menu">
+    <a onfocus="this.blur();" href="{$menu.showurl}" <if condition="($menu['id'] eq $cid) or ($menu['id'] eq $pid)">class="cur"</if>>{$menu.cname}</a> </gxcms><span>|</span>
+    <a href="{$topurl}" <if condition="check_model('top10') eq 1">class="cur"</if>>排行</a>
+    <a href="{$specialurl}" <if condition="check_model('special') eq 1">class="cur"</if>>专题</a>
+
+
+   
+  </div>
+  <div class="query"> <span class="query_l"></span>
+    <form action="{$webpath}index.php?s=video/search" method="post" name="search" id="search" >
+      <input type="text" value="{$keyword|default='请输入关键字'}" id="wd" name="wd" autocomplete="off" maxlength="35">
+      <div id="search_sort"><span id="cur_txt">视频</span><ul class="sort" id="sort"><li><a href="javascript:void(0)">视频</a></li><li><a href="javascript:void(0)">新闻</a></li></ul></div>
+      <button type="submit" class="search_bt"><span>搜索</span></button>
+    </form>
+    <div class="hot_kw">热门关键词：{$hotkey}</div>
+    <span class="query_r"></span> </div>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>播放器设置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<form action="?s=Admin/Config/Updateplayer" method="post" id="gxform">
+ <tr class="table_title">
+  <td colspan="2">播放器参数设置</td>
+</tr>                   
+<tr class="ji">
+  <td class="left">播放器宽度</td>
+  <td><input type="text" name="con[player_width]" size="10" maxlength="4" value="{$player_width}" class="ct"> *</td>
+</tr>
+<tr class="tr">
+  <td class="left">播放器高度</td>
+  <td><input type="text" name="con[player_height]" size="10" maxlength="4" value="{$player_height}" class="ct"> *</td>
+</tr>
+<tr class="ji">
+  <td class="left">缓冲广告最少时间</td>
+  <td><input type="text" name="con[player_time]" size="10" maxlength="2" value="{$player_time}" title="至少需要显示几秒,防止缓冲速度较快下广告没有显示完就播放了" class="ct"> *</td>
+</tr>
+<tr class="ji">
+  <td class="left">播放器安装下载地址</td>
+  <td><input type="text" name="con[player_down]" size="45" maxlength="100" value="{$player_down}"> *</td>
+</tr>
+<tr class="tr">
+  <td class="left">缓冲/暂停广告地址</td>
+  <td><input type="text" name="con[player_buffer]" size="45" maxlength="100" value="{$player_buffer}"> *</td>
+</tr>
+<tr class="tr">
+  <td colspan="2">
+    <input class="bginput" type="submit" name="submit" value=" 提交 ">
+    <input class="bginput" type="reset" name="Input" value="重置" >
+  </td>
+</tr>
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

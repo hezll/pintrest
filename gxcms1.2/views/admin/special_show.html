@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>专题管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/admin_all.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<tr class="table_title"><td colspan="7">网站专题管理</td></tr>
+<tr class="list_head ct">
+  <td width="60">编号<eq name="order" value="id desc"><a href="?s=Admin/Special/Show/type/id/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按ID升序排列"></a><else /><a href="?s=Admin/Special/Show/type/id/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按ID降序排列"></a></eq></td>
+  <td >专题名称</td>
+  <td width="60">人气<eq name="order" value="hits desc"><a href="?s=Admin/Special/Show/type/hits/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按人气升序排列"></a><else /><a href="?s=Admin/Special/Show/type/hits/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按人气降序排列"></a></eq></td>
+  <td width="50">影视</td>
+  <td width="50">文章</td>
+  <td width="80">录入时间<eq name="order" value="addtime desc"><a href="?s=Admin/Special/Show/type/addtime/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按时间升序排列"></a><else /><a href="?s=Admin/Special/Show/type/addtime/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按时间降序排列"></a></eq></td>
+  <td width="100">操作</td>
+</tr>
+<form action="?s=Admin/Special/Delall" method="post" id="gxform" name="gxform">
+<volist name="list_special" id="gxcms">
+<tr  class="tr">
+  <td align="left"><input name="ids[]" type="checkbox" value="{$gxcms.id}" class="noborder">{$gxcms.id}</td>
+  <td align="left"><a href="{$gxcms.specialurl}" target="_blank">{:htmlspecialchars(msubstr($gxcms['title'].$gxcms['intro'],0,40))}</a></td>
+  <td class="td ct">{$gxcms.hits}</td>
+  <td class="td ct"><a href="?s=Admin/Video/Showspecial/id/{$gxcms.id}" title="管理影视">{$gxcms.countvideo}部</a></td>
+  <td class="td ct"><a href="?s=Admin/Info/Showspecial/id/{$gxcms.id}" title="管理文章">{$gxcms.countinfo}篇</a></td>
+  <td class="td ct">{$gxcms.addtime|date='Y-m-d',###}</td>
+  <td class="td ct"><a href="?s=Admin/Special/Add/id/{$gxcms.id}"  title="点击修改专题">编辑</a> <a href="?s=Admin/Special/Del/id/{$gxcms.id}" onClick="return confirm('确定删除该专题吗?')"  title="点击删除专题">删除</a> <eq name="gxcms['status']" value="1"><a href="?s=Admin/Special/Status/id/{$gxcms.id}/sid/0" title="点击隐藏专题">隐藏</a><else /><a href="?s=Admin/Special/Status/id/{$gxcms.id}/sid/1" title="点击显示专题"><font color="red">显示</font></a></eq></td>
+</tr>
+</volist> 
+<tr><td colspan="7" bgcolor="#FFFFFF"><div class="pages">{$listpages}</div></td></tr>
+<tr class="tr"><td colspan="7"><input type="button" id="checkall" value="全/反选" class="bginput"> <input type="submit" value="批量删除" onClick="return confirm('删除后将无法还原,确定要删除吗?')" class="bginput"/></td></tr> 
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

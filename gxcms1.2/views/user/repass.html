@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>找回密码-{$webname}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/user.css'>
+</head>
+<include file="top" />
+<div class="repass">
+<if condition="$rid eq 1"> 
+	<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+	<script language="JavaScript">
+        function checkform(){
+            if(!$('#userpwd').val()){
+                alert('密码不能为空!');
+                return false;
+            }
+            if($("#userpwd").val() != $("#reuserpwd").val()){
+                alert('两次输入的密码不一样!');
+                return false;
+            }
+            if($('#userpwd').val().length>15){
+                alert('密码字符过长，最长15个字符!');
+                return false;
+            }
+        }
+    </script>
+	<h3><span style="float:right">第二步</span>找回密码</h3> 
+    <ul><form action="?s=User/Repass/id/2" method="post" onsubmit="return checkform();"><input name="uid" type="hidden" value="{$id}"/>
+    <li>用户名称：{$username|htmlspecialchars}</li>
+    <li>密保问题：{$question|htmlspecialchars}</li>
+    <li>密保答案：<input name="answer" type="text" maxlength="150"/></li>
+    <li>重设密码：<input name="userpwd" id="userpwd" type="password" maxlength="15" /></li>
+    <li>确认密码：<input name="reuserpwd" id="reuserpwd" type="password" maxlength="15" /></li>
+    <li style="padding-left:100px; padding-top:20px"><input class="bginput" name="submit" type="submit" value="下一步" /></li>
+    </form></ul>
+<elseif condition="$rid eq 3" />
+    <ul>恭喜您!您的密码已重置，请<a href="index.php?s=User/Login">登录</a>修改!</ul>
+<else /> 
+	<h3><span style="float:right">第一步</span>找回密码</h3> 
+    <ul><form action="?s=User/Repass/id/1" method="post">
+    <li>请输入用户名称或邮箱：<input name="username" type="text"/></li>
+    <li style="padding-left:100px; padding-top:20px"><input class="bginput" name="submit" type="submit" value="下一步" /></li>
+    </form></ul>
+</if>   
+</div>
+</body>
+</html>

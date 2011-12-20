@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>模板管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<head>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<tr class="table_title">
+  <td colspan="5"><h2>模板管理：</h2></td>
+</tr>
+<tr align=center class="list_head">
+  <td width="80%" >图片保存路径</td>
+  <td width="20%" nowrap>修改时间</td>
+</tr><volist name="dir" id="gxcms">
+<tr class="tr">
+  <td ><img src="./views/images/admin/top13.gif"><a href="javascript:" onClick="showdelimg('?s=Admin/Upload/Attdel/id/{$gxcms.id}');">点击这里清理 {$gxcms.path} 的无效图片</a></td>
+  <td style="text-align:center">{$gxcms.mtim|date='Y-m-d H:i:s',###}</td>
+</tr>
+</volist>
+</table>
+<include file="footer" />
+</body>
+</html>

@@ -1,0 +1,6 @@
+<gxcms name="video" cid="'.$_GET['cid'].'" limit="'.$_GET['limit'].'" order="stars desc,hits desc"> 
+<li <eq name="i" value="7">class="no"</eq>>
+<div class="pic"><a href="{$video.readurl}" target="_blank"><img src="{$video.picurl}" title="{$video.title}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" height="140" width="98"></a></div>
+<div><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,8}</a></div>
+</li>
+</gxcms>

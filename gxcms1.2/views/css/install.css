@@ -1,0 +1,70 @@
+body {
+	text-align:center
+}
+#installbox {
+	background-color:white;
+	border:1px solid #70afd3;
+	margin:0 auto;
+	width:600px;
+	text-align:left;
+	margin-top:2em
+}
+.msgtitle {
+	padding:3px 3px;
+	color:white;
+	font-weight:bold;
+	line-height:21px;
+	height:25px;
+	font-size:12px;
+	border-bottom:1px solid #70afd3;
+	text-indent:3px;
+	background:url(../images/install/top_bg.gif) repeat-x #70afd3;
+}
+#msgbody {
+	font-size:12px;
+	line-height:25px;
+}
+#msgbottom {
+	text-align:center;
+	height:20px;
+	line-height:20px;
+	font-size:12px;
+	background-color:#70afd3;
+	color:#FFFFFF
+}
+label {
+	cursor:pointer;
+	height:15px;
+	line-height:15px;
+	width:80px;
+}
+label:hover {
+	background-color:#f5f5f5
+}
+h3 {
+	font-size:14px;
+	font-weight:bold;
+	border-bottom:1px solid #C4E1FF;
+	padding:2px 0 2px 30px;
+	color:#333
+}
+input {
+	border-width:0;
+}
+textarea, input {
+	padding:2px;
+	border:1px solid;
+	border-color:#666 #ccc #ccc #666;
+	background:#fbfbfb;
+	color:#333
+}
+.btn {
+	margin:3px 0;
+	padding:2px 5px;
+	*padding:4px 5px 1px;
+	border-color:#ddd #666 #666 #ddd;
+	background:#DDD;
+	color:#000;
+	cursor:pointer;
+	vertical-align:middle
+}

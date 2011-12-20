@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>模板管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<tr class="table_title"><td colspan="5">网站模板管理</td></tr>
+<tr class="list_head ct">
+  <td >文件名</td>
+  <td width="150">文件描述</td>
+  <td width="100">文件大小</td>
+  <td width="150">修改时间</td>
+  <td width="100">操作</td>
+</tr>
+<notempty name="dirup">   
+<tr class="tr">
+<td colspan="5"><img src="./views/images/file/folder.png"> <a href="?s=Admin/Tpl/Show/id/{$dirup}" >上级目录</a> 当前目录: {$dirpath}</td>
+</tr>    
+</notempty> 
+<volist name="dir" id="gxcms">
+<eq name="gxcms.isDir" value="1">
+<tr class="tr">
+<td ><img src="./views/images/file/folder.png"> <a href="?s=Admin/Tpl/Show/id/{:str_replace('/','*',$gxcms['path'].'/'.$gxcms['filename'])}" >{$gxcms.filename}</a></td>
+<td class="td ct">文件夹</td>
+<td class="td ct">{:byte_format(getdirsize($gxcms['path'].'/'.$gxcms['filename']))}</td>
+<td class="td ct">{$gxcms.mtime|get_color_date='Y-m-d H:i:s',###}</td>
+<td class="td ct"><a href="?s=Admin/Tpl/Show/id/{:str_replace('/','*',$gxcms['path'].'/'.$gxcms['filename'])}">下级目录</a></td>
+</tr>
+<else />
+<tr class="tr">
+<td ><img src="./views/images/file/{$gxcms.ext|default='other'}.png"> {$gxcms.filename}</td>
+<td class="td ct">{$gxcms.filename|get_tpl_name}</td>
+<td class="td ct">{$gxcms.size|byte_format}</td>
+<td class="td ct">{$gxcms.mtime|get_color_date='Y-m-d H:i:s',###}</td>
+<php>if(ereg("\.html|\.txt|\.css|\.php|\.js",$gxcms['filename'])){</php>
+<td class="td ct"><a href="?s=Admin/Tpl/Add/id/{:str_replace('/','*',str_replace('.'.$gxcms['ext'],'@'.$gxcms['ext'],$gxcms['path'].'/'.$gxcms['filename']))}">编辑</a> <a href="?s=Admin/Tpl/Del/id/{:str_replace('/','*',str_replace('.'.$gxcms['ext'],'@'.$gxcms['ext'],$gxcms['path'].'/'.$gxcms['filename']))}" onClick="return confirm('确定删除该文件吗?')">删除</a></td>
+<php>}else{</php>
+<td width="125" class="td ct"><a href="{$gxcms.path}/{$gxcms.filename}" target="_blank">浏览</a> <a href="?s=Admin/Tpl/Del/id/{$gxcms.filename}" onClick="return confirm('确定删除该文件吗?')">删除</a></td>
+<php>}</php>
+</tr>
+</eq>
+</volist>
+</table>
+<include file="footer" />
+</body>
+</html>

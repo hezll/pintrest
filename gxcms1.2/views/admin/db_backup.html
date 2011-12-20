@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>数据库还原管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/admin_all.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<form action="?s=Admin/Data/Delall" method="post" id="gxform" name="gxform">
+<tr class="table_title"><td colspan="6">数据库分卷还原</td></tr>
+<tr class="list_head ct">
+<td width="60">编号</td>
+<td >文件名</td>
+<td width="50">卷号</td>
+<td width="60">文件大小</td>
+<td width="150">备份时间</td>
+<td width="120">操作</td>
+</tr><volist name="list_backup" id="gxcms">
+<tr class="tr">
+  <td class="lt"><input type="checkbox" name="ids[]" value="{$gxcms.filename}" class="noborder">{$i}</td>
+  <td class="lt">{$gxcms.filename}</td>
+  <td class="td ct">{$gxcms.number}</td>
+  <td class="td ct">{$gxcms.filesize} M</td>
+  <td class="td ct">{$gxcms.maketime}</td>
+  <td class="td ct"><a href="?s=Admin/Data/Backin/id/{$gxcms.pre}" onClick="return confirm('导入数据会删除现在数据库的所有信息,请确定是否导入?')">导入</a> | <a href="?s=Admin/Data/Backdel/id/{$gxcms.filename}" onClick="return confirm('确定删除?')">删除</a> | <a href="?s=Admin/Data/Backdown/id/{$gxcms.filename}">下载</a></td>
+</tr></volist>
+<tr class="tr">
+<td colspan="6">说明:导入时只需要点导入任意一个文件,程序会自动导入剩余文件!</td>
+</tr>
+<tr>
+<td colspan="6" class="tr"><input type="button" class="bginput" id="checkall" value="全/反选" style="*padding-top:2px;"> <input type="submit" class="bginput" value="批量删除" onClick="return confirm('确定删除?')"/></td>
+</tr>
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

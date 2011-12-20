@@ -1,0 +1,260 @@
+﻿* {
+	padding:0px;
+	margin:0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+body {
+	margin: 0px;
+	font-size:12px;
+	color: #888;
+}
+input {
+	vertical-align:middle;
+}
+img {
+	border:none;
+	vertical-align:middle;
+}
+ul,li{
+	list-style:none
+}
+a {
+	color:#2366A8;
+	text-decoration: none;
+}
+a:hover {
+	color:#2366A8;
+	text-decoration:underline;
+}
+.login {
+	width:640px;
+	background:#FFF;
+	padding-bottom:10px;
+	margin-top: 180px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+.login .left{
+	float:left;
+	width:300px;
+	height:150px;
+	background:url(../images/user/login.gif) no-repeat 10px;
+}
+.login .left span{
+	float:right;
+	padding-right:10px;
+	padding-top:30px;
+	font-size:14px;
+	font-weight:bold;
+	color:#666666
+}
+.login .right{
+	float:right;
+	width:300px;
+}
+.login .right li{
+	clear:both;
+	margin:20px 0px;
+	list-style:none;
+}
+.login .right li input {
+	font-size:12px;
+	border:1px solid #dcdcdc;
+	background:url(../images/admin/login_input_bg.gif) left top no-repeat;
+	height: 18px;
+	line-height: 18px;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+.login .right li .input {
+	width:64px;
+	height:24px;
+	border:none;
+	cursor:pointer;
+	background-color: #fff;
+	background-image: url(../images/admin/login_submit.gif);
+	background-repeat: no-repeat;
+}
+.login .right li .input2  {
+	background-image: url(../images/user/reg_submit.gif);
+}
+.login .right .reginput{
+	padding-left:12px;
+}
+.login .regleft{
+	float:left;
+	width:300px;
+	height:300px;
+	background:url(../images/user/login.gif) no-repeat 10px;
+}
+.login .regleft span{
+	float:right;
+	padding-right:10px;
+	padding-top:110px;
+	font-size:14px;
+	font-weight:bold;
+	color:#666666
+}
+.top{
+	width:100%; 
+	height:60px; 
+	background:url(../images/user/top_bg.gif);
+	text-align:center
+}
+.top .box{
+	width:760px; 
+}
+.top .box .logo{
+	float:left;
+	padding-top:5px;
+}
+.top .box .logo a{
+	height:40px;
+	line-height:40px;
+	font-size:16px;
+	font-weight:700;
+	color: #666666
+}
+.top .box .info{
+	float:right;
+	padding-top:20px
+}
+.repass,.show {
+	width:760px;
+	background:#FFF;
+	margin:0px auto;
+	padding:0px auto;
+	margin-top:30px
+}
+.show .left{
+	float:left;
+	width:130px;
+	border-right:1px solid #CCC;
+}
+.show .left h3{
+	background:url(../images/user/left.gif) no-repeat -30px 3px;
+	padding-left:20px;
+	font-size:14px;
+	margin-bottom:10px;
+}
+.show .left h4{
+	background:url(../images/user/left.gif) no-repeat -30px -37px;
+	padding-left:20px;
+	font-size:14px;
+}
+.show .left ul{
+	padding-left:20px;
+}
+.show .left ul li{
+	height:30px;
+	line-height:30px;
+	list-style:none;
+	font-size:14px;
+	text-indent:15px;/*抬头距 缩进*/
+	letter-spacing:4px;
+}
+.user {
+	font-size:14px;
+	color:#000000;
+	float:right;
+	width:600px	
+}
+.user h3{
+	font-size:14px;
+	border-bottom:1px solid #CCC;
+	color:#000000;
+	padding-bottom:5px;
+	margin-bottom:10px;
+	clear:both
+}
+.user ul{
+}
+.user .face{
+	float:left;
+}
+.user .face img{
+	width:96px;
+	height:96px;
+	border:1px solid #CCC;
+	padding:3px;
+}
+.user .readright{
+	float:left;
+}
+.user .readright li{
+	height:28px;
+	line-height:28px;
+	text-indent:15px;
+	clear:both
+}
+.user .readmore{
+	clear:both;
+}
+.user .readmore li{
+	height:28px;
+	line-height:28px;
+	clear:both
+}
+/* 分页 */
+.pages {
+	text-align:center;
+	padding:10px 0px
+}
+.pages a, .pages em, .pages a:visited {
+	padding:3px 2px;
+	margin:2px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#444;
+	text-decoration:none;
+}
+.pages a.on, .pages a:hover {
+	text-decoration: underline;
+	color: #0066FF;
+}
+.pages span {
+	padding:3px 2px;
+	margin:2px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color: #0066FF
+}
+.pages .pageinput {
+	height:16px;
+	width:30px;
+	text-align:center;
+	font:normal 12px/14px Verdana;
+}
+.pages .pagebg {
+	margin-left:5px;
+	cursor:pointer;
+	padding-left:3px;
+	padding-right:2px;
+	border:1px solid #bdbcbd;
+	background:#FFF url(../images/admin/inputbut_bg.gif) left center repeat-x;
+	height:22px;
+}
+.bginput {
+	cursor:pointer;
+	padding-left:3px;
+	padding-right:2px;
+	padding-top:2px;
+	border:1px solid #bdbcbd;
+	background:#FFF url(../images/admin/inputbut_bg.gif) left center repeat-x;
+	font-size:12px;
+	height:24px;
+}
+.repass h3{
+	width:760px;
+	font-size:14px;
+	border-bottom:1px solid #CCC;
+	color:#000000;
+	padding-bottom:5px;
+	margin-bottom:10px;
+	clear:both
+}
+.repass ul{
+	line-height:30px;
+	margin-top:50px;
+	padding-left:250px;
+}
