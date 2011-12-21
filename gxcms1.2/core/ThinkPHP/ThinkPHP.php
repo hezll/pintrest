@@ -30,7 +30,7 @@ if(defined('RUNTIME_ALLINONE') && is_file(RUNTIME_PATH.'~allinone.php')) {
     // ThinkPHP系统目录定义
     if(!defined('THINK_PATH')) define('THINK_PATH', dirname(__FILE__));
     if(!defined('APP_NAME')) define('APP_NAME', basename(dirname($_SERVER['SCRIPT_FILENAME'])));
-    if(is_file(RUNTIME_PATH.'~runtime.php')) {
+    if(1==2&&is_file(RUNTIME_PATH.'~runtime.php')) {// no cahce
         // 加载框架核心编译缓存
         require RUNTIME_PATH.'~runtime.php';
     }else{

@@ -37,6 +37,8 @@ function build_runtime() {
         }
     }
     $runtime   =  array_merge($runtime,$list);
+
+
     // 加载核心编译文件列表
     foreach ($runtime as $key=>$file){
         if(is_file($file))  require $file;

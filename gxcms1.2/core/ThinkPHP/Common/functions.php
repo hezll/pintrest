@@ -555,13 +555,20 @@ function L($name=null,$value=null) {
 // 获取配置值
 function C($name=null,$value=null)
 {
+    
     static $_config = array();
+   
     // 无参数时获取所有
     if(empty($name)) return $_config;
     // 优先执行设置获取或赋值
+   
     if (is_string($name))
     {
+    
         if (!strpos($name,'.')) {
+ 
+            //if($name=="web_path")
+               
             $name = strtolower($name);
             if (is_null($value))
                 return isset($_config[$name])? $_config[$name] : null;
