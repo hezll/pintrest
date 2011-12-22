@@ -1,12 +1,10 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE HTML>
 <html>
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
     <link rel="stylesheet" href="css/reset.css">
     <style>
         #box {
@@ -24,8 +22,22 @@ and open the template in the editor.
             position: relative;
             background:#00FF11;
         }
+        .pin {
+            width:220px;
+            margin: 10px;
+            float: left;
+            background:#999;
+        }
 
     </style>
+    <script>
+        $(function(){
+            $('#waterfall').masonry({
+               itemSelector:'.pin',
+               columnWidth:240
+            });
+        })
+    </script>
   </head>
   <body>
     TODO write content
