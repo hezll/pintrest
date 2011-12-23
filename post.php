@@ -15,19 +15,37 @@ array_shift($arr_data);
 //http://item.taobao.com/item.htm?id=7627611524&wwdialog=bbxxbbmc  赵云18
 $datatxt = '';
 foreach (glob("yuming/*.txt") as $k=>$filename) {
-    $datatxt = file_get_contents($filename);
-     $arr_tmp = explode('\n', $datatxt);
-var_dump($arr_tmp);
-echo count($arr_tmp);exit;
+    $datatxt .= file_get_contents($filename);
+     
 }
- 
-exit;
-//$arr_data = explode('com', $datatxt);
-//var_dump($arr_data);
+$arr_tmp = preg_split("/[\s,]+|------/", $datatxt);
+$alldata = array_merge($arr_data,$arr_tmp);
+$alldata = array_unique($alldata);
+$data=array();
+foreach($alldata as $val){
+        if(strpos($val,'.net')===false&&strpos($val,'ICP')===false&&$val!=''){
+            $data[] = trim($val); 
+        }       
+}
+//sort($data);
+usort($data,'cmp');
 
-exit;
-//sort($arr_data);
-usort($arr_data,'cmp');
+
+
+foreach($data as $val){
+    if(strlen($val)<=9){//&&strpos($val,"dy.")!==false){
+        $d[] = substr($val,0,-4);
+        
+    }
+       
+}
+sort($d);
+echo "共：".count($d)."个域名可以供选择。<br>";
+foreach($d as $val){
+    if(strlen($val)>9){exit;}
+       echo $val."<br>";
+}
+
 
 function cmp($a, $b)
 {
@@ -37,6 +55,7 @@ function cmp($a, $b)
     return (strlen($a) < strlen($b)) ? -1 : 1;
 }
 
+exit;
 //冒泡排序
 function buble_sort($arr){
     $n = count($arr);
@@ -56,11 +75,5 @@ function buble_sort($arr){
     return $arr;
 }
 
-foreach($arr_data as $val){
-        if(strpos($val,'.net')===false){
-        //echo strpos('.net',$k);
-            echo $val.'<br>';
-        }
-       
-}
+
 
