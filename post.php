@@ -33,7 +33,7 @@ usort($data,'cmp');
 
 
 foreach($data as $val){
-    if(strlen($val)<=9){//&&strpos($val,"dy.")!==false){
+    if(strlen($val)<=9&&strpos($val,"dy.")!==false){
         $d[] = substr($val,0,-4);
         
     }

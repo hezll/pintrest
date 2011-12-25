@@ -1,54 +1,192 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
-    <link rel="stylesheet" href="css/reset.css">
-    <style>
-        #box {
-            width:300px;
-            background:#00FF00;
-            border-style: solid;
-            border-width: 10px;
-            border-color: #ff0000 #0000ff;
-            padding:20px;
-            
-        }
-        #waterfall{
-            margin: 10px auto 0;
-            min-height: 500px;
-            position: relative;
-            background:#00FF11;
-        }
-        .pin {
-            width:220px;
-            margin: 10px;
-            float: left;
-            background:#999;
-        }
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
+        <link rel="stylesheet" href="css/reset.css">
+        <style>
+            #wrapper {position: relative; width: auto; min-width: 933px; margin: 0 auto; border: none;}
+           
+            #waterfall{           
+                position: relative;
+                min-height: 500px;
+                margin: 60px auto 0;
+                background-color:#00FF11;
+                display:hidden;
+            }
+            .item1 {
+                width:192px;
+                padding:15px 15px 0; 
+                float:left;          
+                word-wrap: break-word;
+                background-color:#999;
+            }
+            .box {
+  width: 220px;
+  margin: 10px;
+  float: left;
+  background-color:#ddd;
+  word-wrap: break-word;
+}
+.box1 {
+    width: 192px; 
+    padding: 15px 15px 0; 
+    font-size: 11px; 
+    background-color: #fff; 
+    float:left;
+    box-shadow: 0 1px 3px rgba(34,25,25,0.4); 
+    -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); 
+    -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+    }
 
-    </style>
-    <script>
-        $(function(){
-            $('#waterfall').masonry({
-               itemSelector:'.pin',
-               columnWidth:240
-            });
-        })
-    </script>
-  </head>
-  <body>
-    TODO write content
-    <div id="waterfall">
-     <div class="pin">http://blog.fengyiyi.com/archives/waterfall-Asaph.html</div>
-     <div class="pin">http://lovew3c.com/?p=9</div>
-     <div class="pin">http://www.css88.com/archives/3321</div>
-     <div class="pin">vgrid</div>
-      
-        
-        
-    </div>
-   </body>
+
+
+
+        </style>
+         <script>
+            $(document).ready(function(){
+            var $container = $('#waterfall');
+$container.masonry({itemSelector:'.box'});
+//$container.imagesLoaded( function(){
+//  $container.masonry({
+//    itemSelector : '.box'
+//  });
+//});
+var bro=$.browser;
+    var binfo="";
+    if(bro.msie) {binfo="Microsoft Internet Explorer "+bro.version;}
+    if(bro.mozilla) {binfo="Mozilla Firefox "+bro.version;}
+    if(bro.safari) {binfo="Apple Safari "+bro.version;}
+    if(bro.opera) {binfo="Opera "+bro.version;}
+    //alert(binfo);
+
+          })
+        </script>
+    </head>
+    <body>
+        <div id="wrapper" class="BoardLayout">
+            <div id="waterfall" >
+                <div class="box">
+                  
+                 <p>   http://blog.fengyiyi.com/archives/waterfall-Asaph.htmlasdf</p></div>
+                <div class="box"><p> http://lovew3c.com/?p=9</p></div>
+                <div class="box"><p> http://www.css88.com/archives/3321</p></div>
+                <div class="box"><p> 阿阿斯顿发撒旦法撒旦法撒旦法撒旦法第三方1阿斯顿发生大发撒旦法阿斯顿发生大幅</p></div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="300"alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box">
+                  
+                 <p>   http://blog.fengyiyi.com/archives/waterfall-Asaph.htmlasdf</p></div>
+                <div class="box"><p> http://lovew3c.com/?p=9</p></div>
+                <div class="box"><p> http://www.css88.com/archives/3321</p></div>
+                <div class="box"><p> 阿阿斯顿发撒旦法撒旦法撒旦法撒旦法第三方1阿斯顿发生大发撒旦法阿斯顿发生大幅</p></div>
+
+                <div class="box">
+                  
+                 <p>   http://blog.fengyiyi.com/archives/waterfall-Asaph.htmlasdf</p></div>
+                <div class="box"><p> http://lovew3c.com/?p=9</p></div>
+                <div class="box"><p> http://www.css88.com/archives/3321</p></div>
+                <div class="box"><p> 阿阿斯顿发撒旦法撒旦法撒旦法撒旦法第三方1阿斯顿发生大发撒旦法阿斯顿发生大幅</p></div>
+                 <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258" alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258" alt="&lt;3">
+                    </a>
+                </div><div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258"alt="&lt;3">
+                    </a>
+                </div><div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258"alt="&lt;3">
+                    </a>
+                </div><div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258"alt="&lt;3">
+                    </a>
+                </div><div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258"alt="&lt;3">
+                    </a>
+                </div><div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258"alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" height="258"alt="&lt;3">
+                    </a>
+                </div>
+<!--                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div> <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div> <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box"><p> http://www.css88.com/archives/3321</p></div>
+                <div class="box"><p> 阿阿斯顿发撒旦法撒旦法撒旦法撒旦法第三方1阿斯顿发生大发撒旦法阿斯顿发生大幅</p></div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" alt="&lt;3">
+                    </a>
+                </div><div class="box"><p> http://www.css88.com/archives/3321</p></div>
+                <div class="box"><p> 阿阿斯顿发撒旦法撒旦法撒旦法撒旦法第三方1阿斯顿发生大发撒旦法阿斯顿发生大幅</p></div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" alt="&lt;3">
+                    </a>
+                </div><div class="box"><p> http://www.css88.com/archives/3321</p></div>
+                <div class="box"><p> 阿阿斯顿发撒旦法撒旦法撒旦法撒旦法第三方1阿斯顿发生大发撒旦法阿斯顿发生大幅</p></div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/60939401177526095_SUxlUPJz_b.jpg" alt="&lt;3">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div>  
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div>  
+                <div class="box">
+                    <a href="#">
+                        <img src="http://media-cdn.pinterest.com/upload/15551561182969782_wC5voU8b_b.jpg" alt="&lt;3">
+                    </a>
+                </div>  -->
+
+            </div>
+        </div>
+       
+    </body>
 </html>
