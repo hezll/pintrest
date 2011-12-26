@@ -23,14 +23,15 @@
                 word-wrap: break-word;
                 background-color:#999;
             }
-            .box {
+            .box1 {
   width: 220px;
   margin: 10px;
   float: left;
   background-color:#ddd;
   word-wrap: break-word;
 }
-.box1 {
+.box {
+    position: absolute;
     width: 192px; 
     padding: 15px 15px 0; 
     font-size: 11px; 
@@ -39,6 +40,7 @@
     box-shadow: 0 1px 3px rgba(34,25,25,0.4); 
     -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); 
     -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+    behavior: url(css/PIE.htc); /* This lets IE know to call the script on all elements which get the 'box' class */
     }
 
 
