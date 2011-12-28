@@ -82,6 +82,7 @@
           <h3>{$cname}</h3>
           <div class="sort"> 排序：<a href="{$webpath}index.php?s=video/lists/id/{$cid}/order/addtime">按时间</a>| <a href="{$webpath}index.php?s=video/lists/id/{$cid}/order/weekhits">按人气</a>| <a href="{$webpath}index.php?s=video/lists/id/{$cid}/order/score">按评分</a> </div>
         </div>
+          <gt name="count" value="10"><div class="pages">{$pages}</div></gt>
         <ul class="mov_list"><gxlist name="video" cid="'.$cid.'" limit="10" order="'.$order.'"><li>
           <a href="{$video.readurl}" target="_blank"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" width="119" height="170" alt="{$video.title}"/></a>
           <a href="{$video.readurl}" target="_blank" class="title" title="{$video.title}">{$video.title|get_replace_html=0,12}</a>
