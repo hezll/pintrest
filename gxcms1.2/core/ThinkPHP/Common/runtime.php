@@ -30,6 +30,7 @@ function build_runtime() {
     }else{
         if(defined('THINK_MODE')) {
             // 根据设置的运行模式加载不同的核心编译文件
+    
             $list   =  include THINK_PATH.'/Mode/'.strtolower(THINK_MODE).'.php';
         }else{
             // 默认核心

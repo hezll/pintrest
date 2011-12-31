@@ -48,7 +48,7 @@ class App
         // 取得模块和操作名称
         define('MODULE_NAME',   isset($_SERVER['argv'][1])?$_SERVER['argv'][1]:C('DEFAULT_MODULE'));
         define('ACTION_NAME',    isset($_SERVER['argv'][2])?$_SERVER['argv'][2]:C('DEFAULT_ACTION'));
-
+        var_dump(MODULE_NAME);
         // 执行操作
         R(MODULE_NAME,ACTION_NAME);
         // 保存日志记录

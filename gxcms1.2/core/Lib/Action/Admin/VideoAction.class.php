@@ -302,7 +302,38 @@ class VideoAction extends AdminAction{
 		echo '<li>请稍等5秒，每页批量下载'.$downnum.'张远程图片,正在准备下一次任务！</li><li style="display:none">';
 		redirect(C('cms_admin').'?s=Admin/Video/Downimg',5);
 		echo '</li></div>';
-    }	
+    }
+    public function clidownimg(){
+		$fail = $_GET['picurl'];
+		$downnum = intval(C('upload_http_down'));
+        exit('aaa');
+		if ($fail) {
+			$this->VideoDB->execute('update '.C('db_prefix').'video set picurl = REPLACE(picurl,"fail://", "http://")');
+		}
+		$count = $this->VideoDB->field('id,picurl')->where('Left(picurl,7)="http://" and status=1')->count('id');
+		$list  = $this->VideoDB->field('id,picurl')->where('Left(picurl,7)="http://" and status=1')->limit($downnum)->order('id desc')->select();
+		echo('<div style="font-size:12px;padding:5px;" id="show">');
+		if (empty($list)) {
+			exit(0);
+		}else{
+			
+		}
+		foreach($list as $key=>$value){
+			$down = D('Down');
+			$data['picurl'] = $down->down_img($value['picurl']);
+			if ($data['picurl'] != $value['picurl']) {
+				echo('<li>'.$value['id'].'--'.$value['picurl'].'下载成功!</li>');
+			}else{
+				echo('<li>'.$value['id'].'--'.$value['picurl'].' <font color=red>保存失败!</font></li>');
+				$data['picurl'] = str_replace("http://","fail://",$value['picurl']);
+			}
+			$this->VideoDB->where('id = '.$value['id'])->save($data);
+		}
+		echo '<li>请稍等5秒，每页批量下载'.$downnum.'张远程图片,正在准备下一次任务！</li><li style="display:none">';
+        sleep(5);
+        file_get_contents(C('cms_admin').'?s=Admin/Video/clidownimg');
+		echo '</li></div>';
+    }
 	// 迷你影视列表
     public function showspecial(){
 		$specialid = intval($_REQUEST['id']);
