@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>专题收录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table" style="margin-bottom:0px">
+<tr class="table_title"><td>本专题已收录文章</td></tr>
+<tr class="tr"><td><iframe src="?s=Admin/Special/Showinfo/id/{.id}" scrolling="auto" topmargin="0" width="100%" height="200" marginwidth="0" marginheight="0" frameborder="0" align="center" name="mids"></iframe></td></tr>
+</table>
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table">
+<form action="?s=Admin/Info/Showspecial/id/{.id}" method="post" name="gxform" id="gxform"> 
+<tr class="table_title"><td colspan="8"><span style="float:left">你可以选择以下文章添加到以上专题</span><span style="float:right">搜索文章：&nbsp;&nbsp;<input name="keyword" type="text" id="keyword" size="20" value="{$keyword|htmlspecialchars}">&nbsp;&nbsp;<input type="submit" value="搜 索" class="bginput" title="输入关键字搜索文章"/></span></td></tr>   
+<tr class="ct list_head">
+<td width="90">编号</td>
+<td width="946">文章标题</td>
+<td width="90">操作</td>
+</tr>
+<volist name="list_info" id="gxcms">
+<tr class="tr">
+<td align="center">{$gxcms.id}</td>
+<td ><span style="color:#666">{$gxcms.cid|get_channel_name}</span> {:get_color_title(htmlspecialchars(msubstr($gxcms['title'],0,30)),$gxcms['color'])}</td>
+<td align="center"><a href="?s=Admin/Special/Showinfo/id/{.id}/add/1/key/{$gxcms.id}" target="mids" onClick="this.innerHTML='';">添加</a></td>
+</volist>
+<tr class="tr pages"><td colspan="4">{$listpages}</td></tr> 
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

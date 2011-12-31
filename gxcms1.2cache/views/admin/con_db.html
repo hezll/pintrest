@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>数据库设置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<form action="?s=Admin/Config/Updatedb" method="post" id="gxform">
+ <tr  class="table_title">
+  <td colspan="2">数据库参数设置</td>
+</tr>                   
+<tr class="ji">
+  <td class="left">服务器IP</td>
+  <td><input type="text" name="con[db_host]" size="35" maxlength="50" value="{$db_host}" title="数据库所使用的IP地址 本机请填写localhost"> *
+  </td>
+</tr>
+<tr class="tr">
+  <td class="left">数据库名称</td>
+  <td><input type="text" name="con[db_name]" size="35" maxlength="50" value="{$db_name}" title="系统管理员给您分配的数据库"> *
+  </td>
+</tr>
+<tr class="ji">
+  <td class="left">数据库用户名</td>
+  <td><input type="text" name="con[db_user]" size="35" maxlength="50" value="{$db_user}" title="系统管理员给您分配的数据库对应的用户名"> *
+  </td>
+</tr>
+<tr class="tr">
+  <td class="left">数据库密码</td>
+  <td><input type="text" name="con[db_pwd]" size="35" maxlength="50" value="{$db_pwd}" title="系统管理员给您分配的数据库对应的密码"> *
+  </td>
+</tr>
+<tr class="ji">
+  <td class="left">数据库端口</td>
+  <td><input type="text" name="con[db_port]" size="35" maxlength="50" value="{$db_port}" title="MYSQL数据库所使用的端口号IP地址 默认3306"> *
+  </td>
+</tr>
+<tr class="ji">
+  <td class="left">系统表前缀</td>
+  <td><input type="text" name="con[db_prefix]" size="35" maxlength="50" value="{$db_prefix}" title="安装后请勿修改" disabled="disabled"> *
+  </td>
+</tr>                                       
+<tr class="tr">
+  <td colspan="2">
+    <input class="bginput" type="submit" name="submit" value="提交"onClick="return confirm('请仔细检查后再提交,不正确的参数都将可能导致网站不能正常运行!')">
+    <input class="bginput" type="reset" name="Input" value="重置" >
+  </td>
+</tr>
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

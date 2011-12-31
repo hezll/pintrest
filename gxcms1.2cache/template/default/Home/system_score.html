@@ -1,0 +1,7 @@
+<div id="Scorebox">
+    <if condition="C(url_html) eq 1 && C(url_html_play) gt 0">
+    <span id="Score" class="Score">{$score}</span> <span id="Scorenum" class="Scorenum">{$score}</span>分<br />(<span id="Scoreer" class="Scoreer">{$scoreer}</span>人评价过此片) 
+    <else/>
+    <span id="Score">{$score}</span> <span id="Scorenum">{$score}</span>分<br />(<span id="Scoreer">{$scoreer}</span>人评价过此片) 
+    </if>   
+</div>

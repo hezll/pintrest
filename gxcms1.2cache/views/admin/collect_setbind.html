@@ -1,0 +1,7 @@
+<select name="cid" id="cid">
+<volist name="list" id="gxcms">
+<option value="{$gxcms.id}" <if condition="getbindval($_GET['bind']) eq $gxcms['id']">selected</if>>{$gxcms.cname}</option>
+</volist>
+<option value="">取消绑定</option>
+</select>
+<input class="submit" type="button" value="提 交" onClick="submitbind($('#cid').val(),'{.bind}');" style="cursor:pointer"> <input name="button" type="button" value="取 消" class="submit" onClick="hidebind();" style="cursor:pointer">

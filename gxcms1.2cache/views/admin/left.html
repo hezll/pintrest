@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>左侧导航-{&web_name}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel='stylesheet' type='text/css' href='./views/css/admin_left.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="javascript">
+function show(url){
+	location.href = url;
+}
+</script>
+</head>
+<body>
+<div class="menu">
+<if condition="$_GET['id'] eq 'config'">
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">系统管理</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Config/Conf/id/web" target="right">网站信息设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/upload" target="right">附件参数设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/cache" target="right">网站缓存设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/url" target="right">访问路径设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/user" target="right">用户中心设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/nav" target="right">快捷菜单设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/player" target="right">播放器设置</a></li>
+        <li><a href="?s=Admin/Config/Conf/id/db" target="right">数据库设置</a></li>
+      </ul>
+    </dd>
+  </dl>
+<elseif condition="$_GET['id'] eq 'content'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">内容管理</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Channel/Show" target="right">网站栏目管理</a></li>
+        <li><a href="?s=Admin/Channel/Add" target="right">添加网站栏目</a></li>
+        <li><a href="?s=Admin/Video/Show" target="right"><font color="#FF0000">视频数据管理</font></a></li>
+        <li><a href="?s=Admin/Video/Add" target="right">添加视频数据</a></li>
+        <li><a href="?s=Admin/Info/Show" target="right">文章资讯管理</a></li>
+        <li><a href="?s=Admin/Info/Add" target="right">添加文章资讯</a></li>
+        <li><a href="?s=Admin/Special/Show" target="right">网站专题管理</a></li>
+        <li><a href="?s=Admin/Special/Add" target="right">添加网站专题</a></li>
+        <li><a href="?s=Admin/Video/Show/serial/1" target="right">连载中的影片</a></li>
+        <li><a href="?s=Admin/Video/Show/status/0" target="right">待审核的影片</a></li>
+        <li><a href="?s=Admin/Video/Show/status/-1" target="right">相似未审核的影片</a></li>
+        <li><a href="?s=Admin/Video/Show/picurl/fail" target="right">图片下载失败影片</a></li>
+      </ul>
+    </dd>
+  </dl>
+<elseif condition="$_GET['id'] eq 'tool'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">扩展工具</a></dt>
+    <dd>
+      <ul id="items">
+      	<li><a href="?s=Admin/Cache/Show" target="right">静态缓存管理</a></li>
+        <li><a href="?s=Admin/Slide/Show" target="right">首页幻灯管理</a></li>
+        <li><a href="?s=Admin/Slide/Add" target="right">添加首页幻灯</a></li>
+        <li><a href="?s=Admin/Adsense/Show" target="right">网站广告管理</a></li>
+        <li><a href="?s=Admin/Link/Show" target="right">友情链接管理</a></li>
+        <li><a href="?s=Admin/Upload/Fileshow" target="right">上传附件管理</a></li>
+        <li><a href="?s=Admin/Video/Downimg" target="right" onClick="return confirm('消耗资源较多，请勿在高峰期执行该操作!')">下载影视图片</a></li>
+        <li><a href="?s=Admin/Info/Downimg" target="right" onClick="return confirm('消耗资源较多，请勿在高峰期执行该操作!')">下载文章图片</a></li>
+        <li><a href="?s=Admin/Video/Downimg/picurl/fail" target="right" onClick="return confirm('消耗资源较多，请勿在高峰期执行该操作!')" title="重新尝试下载">检测影片失败图片</a></li>
+        <li><a href="?s=Admin/Info/Downimg/picurl/fail" target="right" onClick="return confirm('消耗资源较多，请勿在高峰期执行该操作!')" title="重新尝试下载">检测文章失败图片</a></li>    
+        <li><a href="?s=Admin/Datacheck/VideoCheck/" target="right">影片重名检测</a></li> 
+        <li><a href="?s=Admin/Datacheck/ImgClear/" target="right">无效图片清除</a></li>    
+      </ul>
+    </dd>
+  </dl>
+<elseif condition="$_GET['id'] eq 'tpl'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">模板管理</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Tpl/Show" target="right">网站模板管理</a></li>
+        <li><a href="?s=Admin/Tpl/Show/id/.*template*{&default_theme}*Home/mytpl/1" target="right">自定义模板</a></li>
+      </ul>
+    </dd>
+  </dl>
+<elseif condition="$_GET['id'] eq 'html'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">静态网页生成</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Html/Show" target="right">静态网页选项</a></li>
+        <li><a href="?s=Admin/Html/Videoday/mday/1" target="right">生成当天影视</a></li>
+        <li><a href="?s=Admin/Html/Infoday/aday/1" target="right">生成当天新闻</a></li>
+        <li><a href="?s=Admin/Html/Maps" target="right">生成地图索引</a></li>
+      </ul>
+    </dd>
+  </dl> 
+<elseif condition="$_GET['id'] eq 'user'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">用户信息管理</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Master/Show" target="right">后台用户管理</a></li>
+        <li><a href="?s=Admin/Master/Add" target="right">添加后台用户</a></li>      
+        <li><a href="?s=Admin/User/Show" target="right">用户管理中心</a></li>
+        <li><a href="?s=Admin/User/Add" target="right">添加新用户</a></li>
+        <li><a href="?s=Admin/Comment/Show" target="right">评论管理</a></li>
+        <li><a href="?s=Admin/Comment/Show/status/1" target="right">未审核评论</a></li>
+        <li><a href="?s=Admin/Guestbook/Show" target="right">留言管理</a></li>
+        <li><a href="?s=Admin/Guestbook/Show/status/1" target="right">未审核留言</a></li>
+        <li><a href="?s=Admin/Guestbook/Show/eid/1" target="right">视频报错管理</a></li>
+        <li><a href="?s=Admin/Userview/Show" target="right">收费点播记录</a></li>
+      </ul>
+    </dd>
+  </dl> 
+<elseif condition="$_GET['id'] eq 'collect'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">数据采集管理</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Collect/Show" target="right">一键采集影片</a></li>
+        <li style="background:#e8f3fd;font-weight:600;"><a  href="?s=Admin/CustomCollect/ListShow" target="right" style="background:none;">自定义采集</a></li>
+        <li><a href="?s=Admin/CustomCollect/ListShow" target="right">采集节点管理</a></li>
+        <li><a href="?s=Admin/CustomCollect/Add" target="right">添加采集节点</a></li>
+        <li><a href="?s=Admin/CustomCollect/ColVideo" target="right">采集影片入库</a></li>
+        <li><a href="?s=Admin/CustomCollect/AutoChannel" target="right">自定义转换</a></li>
+      </ul>
+    </dd>
+  </dl>
+<elseif condition="$_GET['id'] eq 'data'"/>
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target="_self">数据库操作</a></dt>
+    <dd>
+      <ul id="items">
+        <li><a href="?s=Admin/Data/Showtable" target="right">数据库备份</a></li>
+        <li><a href="?s=Admin/Data/Showback" target="right">数据库还原</a></li>
+        <li><a href="?s=Admin/Data/Showsql" target="right">高级SQL语句</a></li>
+        <li><a href="?s=Admin/Data/Showtable/id/field" target="right">数据批量替换</a></li>       
+      </ul>
+    </dd>
+  </dl>            
+<else />
+  <dl>
+    <dt><a onClick="showHide('items');" href="#" target=_self>自定义快捷菜单</a></dt>
+    <dd>
+      <ul id="items"><volist name="Think.config.web_admin_nav" id="gxcms">
+        <li><a href="{$gxcms}" target="right">{$key|get_replace_html=0,10}</a></li>
+      </volist></ul>
+    </dd>
+  </dl>
+</if>
+</div>
+<script language="javascript">
+function showHide(objname){
+	$("#items").toggleClass("none"); 
+}
+</script>
+</body>
+</html>

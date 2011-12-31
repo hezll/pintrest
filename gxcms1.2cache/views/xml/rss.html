@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>{$webname}</title> 
+<description>{$webname}</description> 
+<link>{$weburl}</link> 
+<language>zh-cn</language> 
+<docs>{$webname}</docs> 
+<generator>Rss Powered By {$weburl}</generator> 
+<image>
+<url>{$weburl}public/images/logo.gif</url> 
+</image>
+<gxfor name="listmap" id="video">
+<item>
+<title>{$video.title|htmlspecialchars}{$video.intro|htmlspecialchars}</title> 
+<link>{:get_base_url($weburl,$video['readurl'])}</link>
+<author>{$video.actor|htmlspecialchars}</author>
+<pubDate>{$video.addtime|date='Y-m-d H:i:s',###}</pubDate>
+<description><![CDATA["{$video.content|get_replace_html=0,200}"]]></description> 
+</item>
+</gxfor>
+</channel>
+</rss>

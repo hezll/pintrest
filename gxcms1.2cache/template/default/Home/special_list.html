@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$ckeywords}{$keywords}">
+<meta name="description" content="{$cdescription}{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper">
+<include file="header" />
+<div class="box"><span>您现在所在的位置：</span>{$navtitle}</div>
+<div class="box">
+    <div class="left_col">
+    <div class="topbrd"></div>
+      <div class="bd">
+        <div class="ct">
+          <div class="hd">
+            <h3>热门专题排行</h3>
+          </div>
+          <ul class="top">
+          	<gxcms name="special" limit="10" order="hits desc">
+            <li <gt name="i" value="4">class="b <if condition="$i eq 10">nobrd</if>"</gt>><em>{$i}</em><a href="{$special.readurl}" title="{$special.title}">{$special.title|get_replace_html=0,12}</a><span>10-23</span></li>
+            </gxcms>
+          </ul>
+        </div>
+        </div>
+         <div class="btmbrd"></div>
+    </div>
+    <div class="right_col">
+      <div class="special_box bd"><span class="tl"></span><span class="tr"></span>
+        <div class="ct">
+          <div class="hd">
+            <h3>全部专题列表<span>(共{$count}个)</span></h3>
+          </div>
+          <ul class="special_list">
+            <gxlist name="special" limit="10" order="addtime">
+            <li <if condition="$i%3 eq 0">class="no"</if>><a href="{$special.readurl}"><img src="{$special.logo}"  onerror="this.src='{$webpath}views/images/nophoto.jpg'" width="175" height="104" /></a><a href="{$special.readurl}">{$special.title}</a></li>
+            </gxlist>
+          </ul>
+          <if condition="$count gt 10">
+          <div class="pages">{$pages}</div>
+          </if>
+        </div>
+        <span class="bl"></span><span class="br"></span> </div>
+    </div>
+  </div>
+<include file="footer" />
+</div>
+</body>
+</html>

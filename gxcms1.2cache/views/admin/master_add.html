@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>后台用户添加与编辑</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<gt name="id" value="0">
+<form id="gxform" name="update" action="?s=Admin/Master/Update" method="post">
+<input type="hidden" name="id" value="{$id}">
+<input type="hidden" name="pwd2" value="{$pwd}">
+<else />
+<form id="gxform" name="add" action="?s=Admin/Master/Insert" method="post">
+</gt>  
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<tr class="table_title">
+  <td colspan="2">{$tpltitle}系统用户</td>
+</tr>
+<tr class="tr">
+  <td width="100" class="rt">用户名称：</td>
+  <td ><input name="user" type="text" value="{$user}" class="w200" maxlength="12" <gt name="id" value="0">disabled</gt>> *最大12个字符</td>
+</tr>
+<tr class="ji">
+  <td class="rt">用户密码：</td>
+  <td><input name="pwd" type="password" class="w200" maxlength="12"> <gt name="id" value="0">不修改密码请留空<else />*最大12个字符</gt></td>
+</tr>
+<tr class="tr">
+  <td class="rt">确定密码：</td>
+  <td><input name="repwd" type="password" class="w200" maxlength="12"> <gt name="id" value="0"><else />*</gt></td>
+</tr>
+<tr class="ji">
+  <td class="rt">用户权限：</td>
+  <td ><!--id="checkContainor" -->
+  <input name="usertype[0]" type="checkbox" value="1" class="noborder" <eq name="usertype.0" value="1">checked</eq>>参数配置
+  <input name="usertype[1]" type="checkbox" value="1" class="noborder" <eq name="usertype.1" value="1">checked</eq>>缓存管理
+  <input name="usertype[2]" type="checkbox" value="1" class="noborder" <eq name="usertype.2" value="1">checked</eq>>后台用户
+  <input name="usertype[3]" type="checkbox" value="1" class="noborder" <eq name="usertype.3" value="1">checked</eq>>栏目管理
+  <input name="usertype[4]" type="checkbox" value="1" class="noborder" <eq name="usertype.4" value="1">checked</eq>>影视管理
+  <input name="usertype[5]" type="checkbox" value="1" class="noborder" <eq name="usertype.5" value="1">checked</eq>>文章管理
+  <input name="usertype[6]" type="checkbox" value="1" class="noborder" <eq name="usertype.6" value="1">checked</eq>>专题管理
+  <input name="usertype[7]" type="checkbox" value="1" class="noborder" <eq name="usertype.7" value="1">checked</eq>>采集管理  
+  <input name="usertype[8]" type="checkbox" value="1" class="noborder" <eq name="usertype.8" value="1">checked</eq>>用户管理
+  <input name="usertype[9]" type="checkbox" value="1" class="noborder" <eq name="usertype.9" value="1">checked</eq>>观看记录<br>
+  <input name="usertype[10]" type="checkbox" value="1" class="noborder" <eq name="usertype.10" value="1">checked</eq>>评论管理
+  <input name="usertype[11]" type="checkbox" value="1" class="noborder" <eq name="usertype.11" value="1">checked</eq>>留言管理
+  <input name="usertype[12]" type="checkbox" value="1" class="noborder" <eq name="usertype.12" value="1">checked</eq>>模板管理
+  <input name="usertype[13]" type="checkbox" value="1" class="noborder" <eq name="usertype.13" value="1">checked</eq>>广告管理 
+  <input name="usertype[14]" type="checkbox" value="1" class="noborder" <eq name="usertype.14" value="1">checked</eq>>友链管理   
+  <input name="usertype[15]" type="checkbox" value="1" class="noborder" <eq name="usertype.15" value="1">checked</eq>>附件管理
+  <input name="usertype[16]" type="checkbox" value="1" class="noborder" <eq name="usertype.16" value="1">checked</eq>>静态生成
+  <input name="usertype[17]" type="checkbox" value="1" class="noborder" <eq name="usertype.17" value="1">checked</eq>>数据库管理
+  <input name="usertype[18]" type="checkbox" value="1" class="noborder" <eq name="usertype.18" value="1">checked</eq>>幻灯管理
+  <span></span>
+  </td>
+</tr> 
+<tr class="tr">
+  <td colspan="2"><input class="bginput" type="submit" name="submit" value="提交"> <input class="bginput" type="reset" name="Input" value="重置" ></td>
+</tr>
+</table>
+</form>
+<include file="footer" />
+</body>
+</html>

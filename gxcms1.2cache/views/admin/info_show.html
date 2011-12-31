@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>文章资讯管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/admin_all.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table">
+<form action="?s=Admin/Info/Show/keyword" method="post" name="gxform" id="gxform">
+  <tr>
+  <td colspan="8" class="table_title"><span class="fl">文章数据管理(<a href="#" onClick="if(confirm('消耗资源较多，请勿在高峰期执行该操作!')){dialogPop('?s=Admin/Info/Downimg','远程图片下载');}else{return false}" style="color:#f00;">下载远程图片</a>)</span><span class="fr"><a href="?s=Admin/Info/Add">添加文章</a></span></td>
+  <tr class="tr">
+    <td colspan="8"><span style="float:left"><label>搜索文章：&nbsp;&nbsp;</label><select onChange="self.location.href='?s=Admin/Info/Show/cid/'+this.value+''"><option value="">所有分类</option><volist name="list_channel_info" id="gxcms"><option value="{$gxcms.id}" <eq name="gxcms.id" value="$cid">selected</eq>>{$gxcms.cname}</option><volist name="gxcms['son']" id="gxcms"><option value="{$gxcms.id}" <eq name="gxcms.id" value="$cid">selected</eq>>├ {$gxcms.cname}</option></volist></volist></select></span>&nbsp;&nbsp;<input name="keyword" type="text" id="keyword" size="20" value="{$keyword|htmlspecialchars}"> <input type="submit" value="搜 索" class="bginput" />&nbsp;
+    </td>
+  </tr>      
+  <tr class="list_head ct">
+    <td width="70">编号<eq name="order" value="id desc"><a href="?s=Admin/Info/Show/type/id/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按ID升序排列"></a><else /><a href="?s=Admin/Info/Show/type/id/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按ID降序排列"></a></eq></td>
+    <td >文章标题</td>
+    <td width="80">文章分类</td>
+    <td width="70">人气
+      <eq name="order" value="hits desc"><a href="?s=Admin/Info/Show/type/hits/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按人气升序排列"></a><else /><a href="?s=Admin/Info/Show/type/hits/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按人气降序排列"></a></eq></td>
+    <td width="90">推荐星级
+      <eq name="order" value="stars desc"><a href="?s=Admin/Info/Show/type/stars/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按星级升序排列"></a><else /><a href="?s=Admin/Info/Show/type/stars/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按星级降序排列"></a></eq></td>
+    <td width="85">更新时间
+      <eq name="order" value="addtime desc"><a href="?s=Admin/Info/Show/type/addtime/order/asc"><img src="./views/images/admin/up.gif" border="0" alt="点击按时间升序排列"></a><else /><a href="?s=Admin/Info/Show/type/addtime/order/desc"><img src="./views/images/admin/down.gif" border="0" alt="点击按时间降序排列"></a></eq></td>
+    <td width="105" >操作</td>
+  </tr>
+  <volist name="list_info" id="gxcms">
+  <tr class="tr">
+    <td ><input name='ids[]' type='checkbox' value='{$gxcms.id}' class="noborder" checked="checked">{$gxcms.id}</td>
+    <td ><if condition="c('url_html') gt 0"><a href="javascript:showhtml({$gxcms.id});"><font color="green">生成</font></a></if> <a href="{$gxcms.infourl}" target="_blank">{:get_color_title(get_replace_html($gxcms['title'],0,60),$gxcms['color'])}</a></td> 
+    <td class="td ct"><a href="{$gxcms.channelurl}">{$gxcms.cname}</a></td> 
+    <td class="td ct">{$gxcms.hits}</td>
+    <td id="stars_{$gxcms.id}"><volist name="gxcms['stararr']" id="gxcmsstars">
+    <span class="star-{$gxcmsstars}" onClick="sendStar('{$gxcms.title|get_replace_html}',parseInt('{$gxcms.id}'),parseInt('{$key}'),this)"; title="推荐为{$key}星级"></span>
+    </volist></td>
+    <td class="td ct">{$gxcms.addtime|date='Y-m-d',###}</td>
+    <td class="td ct"><a href="?s=Admin/Info/Add/id/{$gxcms.id}" title="点击编辑文章">编辑</a> <a href="?s=Admin/Info/Del/id/{$gxcms.id}" onClick="return confirm('确定删除该文章吗?')" title="点击删除文章">删除</a> <eq name="gxcms['status']" value="1"><a href="?s=Admin/Info/Status/id/{$gxcms.id}/sid/0" title="点击隐藏文章">隐藏</a><else /><a href="?s=Admin/Info/Status/id/{$gxcms.id}/sid/1" title="点击显示文章"><font color="red">显示</a></eq></td>
+  </tr>
+  </volist>
+  <tr class="tr"><td colspan="9" class="pages">{$listpages}</td></tr>
+  <tr class="tr"><td colspan="9" valign="middle"><input type="button" id="checkall" value="全/反选" class="bginput">&nbsp;&nbsp;<input type="submit" value="批量审核" class="bginput" onClick="gxform.action='?s=Admin/Info/Statusall/sid/1';" />&nbsp;&nbsp;<input type="submit" value="取消审核" class="bginput" onClick="gxform.action='?s=Admin/Info/Statusall/sid/0';" />&nbsp;&nbsp;<input type="submit" value="批量删除" onClick="if(confirm('确定要删除吗')){gxform.action='?s=Admin/Info/Delall';}else{return false}" class="bginput"/>&nbsp;&nbsp;<input type="button" value="批量生成" id="createhtml" name="Infoid" class="bginput" <neq name="Think.config.url_html" value="1">disabled</neq>/>&nbsp;&nbsp;<input type="button" id="changecid" name="changecid" class="bginput" value="批量移动"/> <span style="display:none" id="changeciddiv"><select name="changecid"><option value="">选择目标分类</option><volist name="list_channel_info" id="gxcms"><option value="{$gxcms.id}" >{$gxcms.cname}</option><volist name="gxcms['son']" id="gxcms"><option value="{$gxcms.id}" >├ {$gxcms.cname}</option></volist></volist></select> <input type="submit" class="bginput" value="确定转移" onClick="gxform.action='?s=Admin/Info/Changecid';"/></span></td>
+  </tr></form>
+</table>
+<!--浮动层 -->
+<include file="dialog" />
+<style>#dia_title{height:25px;line-height:25px}.jqmWindow{height:300px;width:500px;}</style>
+<script language="JavaScript" charset="utf-8" type="text/javascript">
+function showhtml(id){
+	$.get('?s=Admin/Html/Infoid/ids/'+id,null,function(data){
+		$("#html_"+id).html('<font color=#ff0000>'+data+'</font>');
+		window.setTimeout(function(){
+			$("#html_"+id).html('');
+		},1000);
+	});
+}
+//ajax请求:选择星级控制
+var sendStar = function(infoName,infoid,star,obj){
+	var clip_type = '文章';
+	sub_infoName = infoName.length>8?infoName.substr(0,8)+'..':infoName+'》';
+	$.ajax({
+		  type: 'get',
+		  url: "?s=Admin/Info/Stars/id/"+infoid+"/sid/"+star,
+		  data: infoid,
+		  success:function(){
+			var collect = obj.parentNode.children;
+			for(var i=0;i<collect.length;i++)
+			{
+				if(star<=i)
+				{
+					collect[i].className = 'star-0';
+				}else{
+					collect[i].className = 'star-1';
+				}
+			}
+		}
+	});
+}
+</script>
+<include file="footer" />
+</body>
+</html>

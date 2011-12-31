@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>幻灯管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<style>a{ color: #666666}</style>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<tr class="table_title">
+  <td colspan="3">首页幻灯片列表</td>
+</tr>
+<volist name="list_slide" id="gxcms">
+<tr class="tr ct">
+<td width="180"  class="ct" style="padding:7px 0px 2px 0px;"><a href="{$gxcms.picurl}" target="_blank"><img src="{$gxcms.picurl}" width="160px" height="85px" alt="查看原图" style="border:1px solid #CCCCCC;padding:1px; margin-bottom:3px"></a></td>
+<td style="text-align:left; line-height:20px; white-space:normal;"><font style="font-size:14px;color:#333333;font-weight:bold">{$gxcms.title}</font><br><a href="{$gxcms.link}" target="_blank">{$gxcms.content}</a></td>
+<td width="90" align="center"><a href="?s=Admin/Slide/Add/id/{$gxcms.id}">修改</a> <a href="?s=Admin/Slide/Del/id/{$gxcms.id}" onClick="return confirm('确定删除该幻灯吗?')" title="点击删除幻灯">删除</a>  <eq name="gxcms['status']" value="1"><a href="?s=Admin/Slide/Status/id/{$gxcms.id}/sid/0" title="点击隐藏幻灯">隐藏</a><else /><a href="?s=Admin/Slide/Status/id/{$gxcms.id}/sid/1" title="点击显示幻灯"><font color="red">显示</font></a></eq></td>
+</tr>
+</volist>
+</table>
+<include file="footer" />
+</body>
+</html>

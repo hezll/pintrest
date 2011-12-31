@@ -1,0 +1,20 @@
+<notempty name="list_comment">
+    <ul class="list"><gxfor name="list_comment" id="comment">
+    <li><div class="autoheight">
+        <empty name="comment.face"><img src="{$webpath}views/images/user/face.jpg" /><else /><img src="{$comment.face}" /></empty>
+        <p><span class="time">{$comment.addtime|date='Y-m-d',###}</span>{$comment.floor}楼 <strong>{$comment.username|htmlspecialchars|remove_xss}</strong><br />{$comment.content|htmlspecialchars|remove_xss}</p>
+    </div></li>
+    </gxfor></ul>
+    <if condition="$count gt C('user_page_cm')"><div class="pages">{$pages}</div></if>
+</notempty>
+<!--发表评论表单 -->
+<div class="form">
+	<if condition="(C('user_post') eq 1) and ($userid eq 0)">
+    	<div class="comment_login">发表评论，请登录： <a href="{$webpath}index.php?s=user/login">登录</a>&nbsp;|&nbsp;<a href="index.php?s=user/reg">注册</a></div>
+        <div id="comentDiv"><textarea name="content" id="comment_content" rows="5" disabled="disabled" onFocus="if(this.value=='我来评论，最多200个字。'){this.value='';};this.select();" onblur="if(this.value==''){this.value='我来评论，最多200个字。';};" maxlength="200" class="txt_in"></textarea></div>
+        <p class="under_row"><input id="submitCommBtn" disabled="disabled" onclick="commitFunc()" class="submit" type="button" value="发表评论"/> </p>
+    <else/>
+        <textarea name="content" id="comment_content" rows="5" onfocus="if(this.value=='我来评论，最多200个字。'){this.value='';}" onblur="if(this.value==''){this.value='我来评论，最多200个字。';};" maxlength="200" class="txt_in">{$content|default='我来评论，最多200个字。'}</textarea>
+        <p class="under_row"><input id="comment_button" class="submit" onclick="CommentPost();" type="button" value="发表评论"/></p>
+    </if>
+</div>

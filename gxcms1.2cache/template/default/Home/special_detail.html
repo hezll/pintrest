@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="影视专题：{$title|get_replace_html=0,30}">
+<meta name="description" content="{$content|get_replace_html=0,120}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper">
+<include file="header" />
+<div class="box"><span>您现在所在的位置：</span>{$navtitle}</div>
+<div class="box">
+    <div class="left_col">
+    <div class="topbrd"></div>
+      <div class="bd">
+        <div class="ct">
+          <div class="hd">
+            <h3>热门专题排行</h3></div>
+          <ul class="top">
+           <gxcms name="special" limit="10" order="hits desc">
+          <li <gt name="i" value="3">class="b <if condition="$i eq 10">nobrd</if>"</gt>><em>{$i}</em><a href="{$special.readurl}" title="{$special.title}">{$special.title|get_replace_html=0,15}</a><span>{$special.hits|number_format}</span></li>
+           </gxcms>
+          </ul>
+        </div>
+       </div>
+       <div class="btmbrd"></div>
+    </div>
+    <div class="right_col">
+      <div class="special_box bd">
+      	<span class="tl"></span><span class="tr"></span>
+        <div class="special_read ct">
+          <div class="special_pic"><img src="{$logo}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" width="237" height="142" /></div>
+          <h1>{$title|get_replace_html=0,30}</h1>
+          <div class="time">专题更新时间：{$special.addtime|date='Y-m-d H:m:s',###}</div>
+          <p class="special_intro">{$content}</p>
+        </div>
+        <span class="bl"></span><span class="br"></span> 
+      </div>
+      <div class="blank"></div>
+    <notempty name="mids">
+      <div class="special_box bd">
+      <span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+      <div class="hd"><h3>相关视频列表</h3></div>
+      <ul class="mov_pic_list">
+        <gxcms name="video" ids="'.$mids.'" limit="25"><li>
+          <div class="pic"><a href="{$video.readurl}" target="_blank"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" width="98" height="140" border="0"/></a></div>
+          <div class="mid_title"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,7}</a></div>
+        </li></gxcms>
+      </ul>
+      </div>
+      <span class="bl"></span><span class="br"></span> 
+      </div>
+    </notempty>
+    <notempty name="aids">
+      <div class="blank"></div>
+      <div class="special_box bd">
+      <span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+      <div class="hd"><h3>相关资讯列表</h3></div>
+      <ul class="mov_pic_list">
+        <gxcms name="info" ids="'.$aids.'" limit="10"><li>
+          <div class="pic"><a href="{$info.readurl}" target="_blank"><img src="{$info.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" width="98" height="140" border="0"/></a></div>
+          <div class="mid_title"><a href="{$info.readurl}" title="{$info.title}" target="_blank">{$info.title|get_replace_html=0,7}</a></div>
+        </li></gxcms>
+      </ul>
+      </div>
+      <span class="bl"></span><span class="br"></span> 
+      </div>
+    </notempty>    
+    </div>
+</div>
+<include file="footer" />
+</div>
+</body>
+</html>

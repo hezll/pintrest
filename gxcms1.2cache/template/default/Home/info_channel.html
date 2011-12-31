@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$ckeywords}{$keywords}">
+<meta name="description" content="{$cdescription}{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper">
+<!--头部 开始-->
+<include file="header" />
+<!--头部 结束-->
+<div class="box"><span>您现在所在的位置：</span>{$navtitle}</div>
+<div class="box">
+  <div class="left_col">
+  	<!--热门资讯排行 开始-->
+    <div class="topbrd"></div>
+    <div class="bd">
+      <div class="ct">
+        <div class="hd"><h3>热门{$cname}排行</h3></div>
+        <ul class="top">
+          <gxcms name="info" cid="'.$cid.'" limit="15" order="hits desc">
+            <li <egt name="i" value="4">class="b <if condition="$i eq 10">nobrd</if>"</egt>><em>{$i}</em><a href="{$info.readurl}" target="_blank" title="{$info.title}">{$info.title|get_replace_html=0,20}</a></li>
+          </gxcms>
+        </ul>
+      </div>
+      </div>
+      <div class="btmbrd"></div>
+  </div>
+<!--判断是否有小类 -->  
+<eq name="pid" value="0">
+	<div class="right_col"><div class="news_box bd">
+    <span class="tl"></span><span class="tr"></span>
+    <div class="ct">
+      <div class="hd"><h3>{$cname}列表</h3></div>
+      <ul class="news_list">
+      <gxlist name="info" limit="20" order="'.$order.'" >
+         <li><a href="{$info.readurl}">{$info.title}</a><span>{$info.addtime|get_color_date='m-d',###}</span></li><if condition="$i%5 eq 0"><li class="blank"><br /></li></if>
+      </gxlist>
+      </ul>
+      <if condition="$count gt 10"><div class="pages">{$pages}</div></if>
+    </div>
+    <span class="bl"></span><span class="br"></span> 
+	</div></div>
+<else />
+  <div class="right_col">
+	<php>$arrson = get_channel_array($cid);</php><gxfor name="arrson" id="cidson">
+	<div class="news_box bd">
+        <span class="tl"></span><span class="tr"></span>
+        <div class="ct">
+        <div class="hd"><h3>{:get_channel_name($cidson)}</h3><a href="{:get_channel_name($cidson,'showurl')}" class="more">更多&gt;&gt;</a> </div>
+        <ul class="news_list">
+        <gxcms name="info" cid="'.$cidson.'" limit="10" order="addtime desc,id desc">
+        <li><a href="{$info.readurl}">{$info.title}</a><span>{$info.addtime|get_color_date='m-d',###}</span></li><eq name="i" value="5"><li class="blank"></li></eq>
+        </gxcms>
+        </ul>
+        </div>
+        <span class="bl"></span><span class="br"></span>
+    </div>
+	<div class="blank"></div>
+	</gxfor>
+  </div>
+</eq>
+</div>
+<include file="footer" />
+</div>
+</body>
+</html>

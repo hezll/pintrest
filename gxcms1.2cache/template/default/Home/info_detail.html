@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper"> 
+<include file="header" />
+<div class="box"><span>您现在所在的位置：</span>{$navtitle}</div>
+<div class="box">
+  <div class="left_col">
+      <div class="topbrd"></div>
+      <div class="bd">
+        <div class="ct">
+          <div class="hd">
+            <h3>热门{$cname}排行</h3>
+          </div>
+          <ul class="top">
+            <span id="hot_info" href="{$webpath}index.php?s=my/show/id/hot_info/cid/{$cid}/limit/15">Loading...</span>
+          </ul>
+        </div>
+      </div>
+      <div class="btmbrd"></div>
+  </div>
+  <div class="right_col">
+      <div class="news_box bd">
+      	<span class="tl"></span><span class="tr"></span>
+        <div class="ct">
+          <div class="news_title">
+            <h1>{$title}</h1>
+            <p>{$addtime|get_color_date='Y-m-d H:i:s',###}　来源: {$reurl|default='原创'}</p>
+          </div>
+          <div class="news_cont">
+            <notempty name="picurl">
+              <div class="pic"> <img src="{$picurl|default='http://img.baidu.com/img/iknow/userteam/onerror-b.jpg'}" onerror="this.src='{$tplpath}images/error_198_280.jpg'" alt="{$title}"/> </div>
+            </notempty>
+            {$content}
+            <div class="option_btn">
+              <include file="system_updown" />
+            </div>
+          </div>
+        </div>
+        <span class="bl"></span><span class="br"></span> 
+    </div>
+  </div>
+</div>
+<include file="footer" /> 
+</div>
+</body>
+</html>

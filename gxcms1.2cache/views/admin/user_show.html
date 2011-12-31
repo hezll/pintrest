@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>用户管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/admin_all.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<form action="?s=Admin/User/Show" method="post" id="gxform" name="gxform">
+<tr class="table_title"><td colspan="12">用户管理 <a href="?s=Admin/User/Delnum" style="color:#f00;" onClick="return confirm('确定删除未进行过第二次登录的会员吗?')" title="批量删除未进行过第二次登录的会员">(删除不活跃用户)</a></td></tr>
+<tr class="tr">
+<td colspan="11">搜索用户&nbsp;<input onFocus="this.value=''" type="text" name="keyword" id="keyword" size="35" maxlength="50" value="{$keyword|urldecode|default='可搜索(用户呢称,用户邮箱)'}" style="color:#999;"> <input type="submit" value="搜索" class="bginput"/></td>
+</tr>  
+<tr class="list_head ct">
+  <td width="60">ID</td>
+  <td >用户名称</td>
+  <td width="50">模式</td>
+  <td width="80">剩余点数</td>
+  <td width="100">到期时间</td>
+  <td width="100">注册时间</td>
+   <td width="100">登录IP</td>
+  <td width="50">次数</td>
+  <td width="50">状态</td>     
+  <td width="80">操作</td>
+</tr>
+<volist name="list_user" id="gxcms">
+<tr class="tr ct">
+  <eq name="gxcms.id" value="1">
+  <td align="left"><input name="ids[]" type="checkbox" value="{$gxcms.id}" class="noborder" disabled>{$gxcms.id}</td>
+  <else />
+  <td align="left"><input name="ids[]" type="checkbox" value="{$gxcms.id}" class="noborder">{$gxcms.id}</td>
+  </eq>
+  <td align="left">{$gxcms.username|htmlspecialchars}</td>
+  <td style="padding:0px"><eq name="gxcms.pay" value='1'>包月<else />扣点</eq></td>
+  <td style="padding:0px">{$gxcms.money}点</td>
+  <td style="padding:0px">{$gxcms.duetime|date='Y-m-d',###}</td>
+  <td style="padding:0px">{$gxcms.jointime|date='Y-m-d',###}</td>
+  <td style="padding:0px">{$gxcms.logip}</td>
+  <td style="padding:0px">{$gxcms.lognum}</td>
+  <td style="padding:0px"><eq name="gxcms['status']" value="1"><a href="?s=Admin/User/Status/id/{$gxcms.id}/sid/0" title="点击将该用户拉为黑名单">正常</a><else /><a href="?s=Admin/User/Status/id/{$gxcms.id}/sid/1" title="点击将该用户设为正常用户"><font color="red">锁定</font></a></eq></td>
+  <td style="padding:0px"><a href="?s=Admin/User/Add/id/{$gxcms.id}" title="点击修改用户">编辑</a> <a href="?s=Admin/User/Del/id/{$gxcms.id}" title="点击删除用户">删除</a></td>
+</tr>
+</volist> 
+<tr class="tr pages"><td colspan="12">{$listpages}</td></tr>
+<tr class="tr"><td colspan="12"><input type="button" id="checkall" value="全/反选" class="bginput"> <input type="submit" value="批量删除" onClick="if(confirm('删除后将无法还原,确定要删除吗?')){gxform.action='?s=Admin/User/Delall';}else{return false;}" class="bginput"/></td></tr> 
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

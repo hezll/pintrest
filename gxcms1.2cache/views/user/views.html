@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>消费记录-{$webname}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/user.css'>
+</head>
+<include file="top" />
+<div class="show">
+<div class="left">
+	<include file="left" />
+</div>
+<div class="user">
+    <h3><span style="float:right">共{$count_view}条记录</span>我的消费记录</h3> 
+    <gxfor name="list_view" id="gxcms">
+    <ul style="margin-bottom:10px">
+    <li>{$gxcms.floor} <a href="{:get_read_url('video',$gxcms['did'],$gxcms['cid'])}" target="_blank">{$gxcms.title|htmlspecialchars}</a> {$gxcms.viewtime|date='Y-m-d H:i:s',###}</li>
+    </ul> 
+    </gxfor> 
+    <ul class="pages"><notempty name="list_view"><div class="comm-pager">{$pages}</div><else />没有消费记录。</notempty></ul>
+</div>	
+</div>
+</body>
+</html>

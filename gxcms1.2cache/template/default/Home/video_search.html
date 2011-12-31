@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper">
+<!--头部 开始-->
+<include file="header" />
+<!--头部 结束-->
+<div class="box"><span>您现在所在的位置：</span>{$navtitle}</div>
+<div class="box">
+  <div class="left_col">
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>热门视频排行</h3><a href="{$topurl}" class="more">更多&gt;&gt;</a></div>
+        <ul class="top"><gxcms name="video" limit="20" order="hits desc"> 
+        <li <egt name="i" value="4">class="b <if condition="$i eq 10">nobrd</if>"</egt>> 
+        	<em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,15}</a> <span>{$video.addtime|get_color_date='m-d',###}</span>
+        </li>
+        </gxcms></ul>
+    </div></div>
+    <div class="btmbrd"></div>
+  </div>
+  <div class="right_col"><div class="video_search_box bd">
+    <span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <gt name="count" value="0">
+      	<div class="video_search_total">共找到<span class="kw">{$count}</span>条与<span class="kw">"{$keyword}"</span> 的相关结果</div>
+        <ul class="mov_list">
+          <gxsearch name="video" limit="10" order="'.$order.'"><li> 
+            <a href="{$video.readurl}"><img src="{$video.picurl}" width="119" height="170" border="0" onerror="this.src='{$webpath}views/images/nophoto.jpg'"/></a>
+              <a href="{$video.readurl}" class="title" title="{$video.title}">{$video['title']|get_replace_html=0,10|get_hilight=$keyword}</a>
+              <p>导演：{$video['director']|default='未知'|get_hilight=$keyword} <br>主演：主演：{$video.actor|get_replace_html=0,6|get_actor_url}<br>地区：{$video.area}   年份：{$video.year|default='未录入'}<br>评分：<span class="score">{$video.score}</span> </p>
+              <p>剧集介绍：{$video.content|get_replace_html=0,35,'utf-8',true|get_hilight=$keyword}</p>
+              <p class="bar"><a href="{$video.readurl}" class="view">详细资料&gt;&gt;</a><a href="{$video.playerurl}" class="watch">立即观看</a> </p>
+            </li></gxsearch>
+        </ul>
+        	<if condition="$count gt 10"><div class="pages">{$pages}</div></if>
+        <else />
+        	<div style="height:200px; line-height:200px; text-align:center">未找到与"<span class="kw-hilight">"{$keyword}"</span>"相关的视频，请给我们<a href="{$guestbookurl}">留言</a>!</div>
+        </gt>
+      </div>
+      <span class="bl"></span><span class="br"></span>
+  </div></div>
+</div>
+<include file="footer" />
+</body>
+</html>

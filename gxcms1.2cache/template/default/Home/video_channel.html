@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$webtitle}</title>
+<meta name="keywords" content="{$ckeywords}{$keywords}">
+<meta name="description" content="{$cdescription}{$description}">
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template.css'>
+</head>
+<body>
+<div id="wrapper">
+<include file="header" />
+<div class="box">
+  <span>您现在所在的位置：</span>{$navtitle}
+</div>
+<div class="box">
+  <div class="left_col">
+    <!--热门电影排行 开始-->
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>热门{$cname}排行</h3><a href="{$topurl}" class="more">更多&gt;&gt;</a></div>
+        <ul class="top"><gxcms name="video" cid="'.$cid.'" limit="10" order="weekhits desc"> 
+        <li <egt name="i" value="4">class="b <if condition="$i eq 10">nobrd</if>"</egt>> 
+        	<em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,15}</a> <span>{$video.addtime|get_color_date='m-d',###}</span>
+        </li>
+        </gxcms></ul>
+    </div></div>
+    <div class="btmbrd"></div>
+    <!--热门电影排行 结束-->
+    <div class="blank"></div>
+    <!--网友最爱电影排行 开始-->
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>网友最爱{$cname}</h3><a href="{$topurl}" class="more">更多&gt;&gt;</a></div>
+        <ul class="top"><gxcms name="video" cid="'.$cid.'" limit="10" order="score desc"> 
+        <li <egt name="i" value="4">class="b <if condition="$i eq 10">nobrd</if>"</egt>> 
+        	<em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,15}</a> <lt name="i" value="4"><span style="color:#e02e2e;"><else /><span></lt>{$video.score}</span>
+        </li>
+        </gxcms></ul>
+      </div>
+    </div>
+    <div class="btmbrd"></div>
+    <!--网友最爱电影排行 结束-->
+  </div>
+  <div class="right_col">
+    <div class="mov bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd">
+          <h3>影片检索：</h3>
+        </div>
+        <div class="mov_index"><if condition="get_channel_son($cid) eq 0">
+          <dl><dt>按类型</dt>
+              <dd><gxcms name="menu" ids="'.$cid.'">
+                <gxfor name="menu.son" id="menuson"> <a href="{$menuson.showurl}">{$menuson.cname}</a></gxfor>
+              </gxcms></dd>
+          </dl></if>
+          <dl>
+            <dt>按地区</dt>
+            <dd id="areahtml">{$area}</dd>
+          </dl>
+          <dl>
+            <dt>按时间</dt>
+            <dd id="yearhtml">{$year}</dd>
+          </dl>
+          <dl class="nobrd">
+            <dt>按拼音</dt>
+            <dd class="letter">{:get_letter_url($cid,$letter,'video')}</dd>
+          </dl>
+        </div>
+      </div>
+      <span class="bl"></span><span class="br"></span>
+    </div>
+    <!-- -->
+    <div class="blank"></div>
+    <div class="mov bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct"><div class="hd">
+          <h3>{$cname}</h3>
+          <div class="sort"> 排序：<a href="{$webpath}index.php?s=video/lists/id/{$cid}/order/addtime">按时间</a>| <a href="{$webpath}index.php?s=video/lists/id/{$cid}/order/weekhits">按人气</a>| <a href="{$webpath}index.php?s=video/lists/id/{$cid}/order/score">按评分</a> </div>
+        </div>
+        <ul class="mov_list"><gxlist name="video" cid="'.$cid.'" limit="10" order="'.$order.'"><li>
+          <a href="{$video.readurl}" target="_blank"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" width="119" height="170" alt="{$video.title}"/></a>
+          <a href="{$video.readurl}" target="_blank" class="title" title="{$video.title}">{$video.title|get_replace_html=0,12}</a>
+          <p>导演：{$video.director|default='未知'} <br />主演：{$video.actor|get_replace_html=0,6|get_actor_url}<br />地区：{$video.area}   年份：{$video.year|default='未录入'}<br />评分：<span class="score">{$video.score}</span> </p>
+          <p class="episode_des">剧集介绍：{$video.content|get_replace_html=0,36,'utf-8',true}</p>
+          <p class="bar"><a href="{$video.readurl}" class="view">详细资料&gt;&gt;</a><a href="{$video.playerurl}" class="watch">立即观看</a></p>
+        </li></gxlist></ul>
+        <gt name="count" value="10"><div class="pages">{$pages}</div></gt>
+      </div><span class="bl"></span><span class="br"></span></div>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

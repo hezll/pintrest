@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改用户资料-{$webname}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/user.css'>
+</head>
+<include file="top" />
+<div class="show">
+<div class="left">
+	<include file="left" />
+</div>
+<div class="user">
+    <h3>修改资料</h3> 
+    <ul style="line-height:30px"><form action="index.php?s=User/Update" method="post" id="gxform"><input name="id" type="hidden" value="{$id}" />
+    <li>用户帐号：{$username}</li>
+    <li>用户积分：{$money}</li>
+    <li>联系 QQ：<input name="qq" type="text" value="{$qq}" maxlength="12"></li>
+    <li>原始密码：<input name="olduserpwd" type="password" /></li>
+ 	<li>修改密码：<input name="userpwd" type="password" /> 不修改请留空</li>   
+    <li>确认密码：<input name="reuserpwd" type="password" /> 不修改请留空</li>
+    <li>密保问题：<input name="question" type="text" value="{$question|htmlspecialchars}" maxlength="20"/></li>
+    <li>密保答案：<input name="answer" type="text" value="{$answer|htmlspecialchars}" maxlength="20"/></li>
+    <li style="padding-top:10px"><input class="bginput" name="submit" type="submit" value="更 新" /> <input class="bginput" name="reset" type="reset" value="重 填" /></li>
+	</form></ul> 
+</div>	
+</div>
+</body>
+</html>

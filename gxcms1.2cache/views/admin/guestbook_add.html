@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>编辑留言</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>  
+<table width="95%" border="0" align="center" cellpadding="4" cellspacing="1" class="table">
+<form id="gxform" name="update" action="?s=Admin/Guestbook/Update" method="post">
+<input type="hidden" name="id" value="{$id}">  
+<tr class="table_title"><td><empty name="reid">修改留言<else />回复留言</empty></td></tr>
+<empty name="reid">
+<tr class="tr"><td colspan="2"><textarea id="content" name="content" style="width:99%;height:250px;">{$content|remove_xss}</textarea></td></tr>
+<else />
+<tr class="tr"><td colspan="2"><textarea id="content" name="recontent" style="width:99%;height:350px;">{$recontent}</textarea></td></tr>
+</empty>
+<tr class="tr">
+<td colspan="2"><input name='status' type='checkbox' value='1' class="noborder" <eq name="status" value="1">checked</eq>>是否审核 <input class="bginput" type="submit" name="submit" value="提交"> <input class="bginput" type="reset" name="Input" value="重置" ></td>
+</tr> 
+</form>
+<notempty name="reid">
+<script language="javascript" type="text/javascript" charset="utf-8" src="views/editor/kindeditor.js"></script>
+<script type="text/javascript">
+KE.show({
+	id : 'content',
+	resizeMode : 1,
+	allowPreviewEmoticons : false,
+	allowUpload : false,
+	items : [
+	'source', 'textcolor', 'bold', 'italic', 'underline',
+	'removeformat', '|','emoticons', 'image', 'link', 'unlink']
+});
+var $content = $('#content').val();
+document.getElementById("gxform").onreset = function(){
+	KE.html('content', $content);
+}
+</script> 
+</notempty>
+</table>
+<include file="footer" />
+</body>
+</html>

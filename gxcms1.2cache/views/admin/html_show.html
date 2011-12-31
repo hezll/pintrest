@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>静态网页生成</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<form action="?s=Admin/Html/Maps" method="post" id="gxform" name="gxform">
+<tr class="table_title"><td colspan="13">静态网页生成选项</td></tr>
+<tr class="tr"><td colspan="2" ><input type="button" value="生成网站首页" class="bginput" onClick="window.location='?s=Admin/Html/Cindex/';"/ <neq name="url_html" value="1">disabled</neq> /> <input type="button" class="bginput" value="一键生成全站" onClick="window.location='?s=Admin/Html/Videoread/go/1';" <neq name="url_html" value="1">disabled</neq>/> <input type="button" class="bginput" value="一键生成专题" onClick="window.location='?s=Admin/Html/Specialread/go/1';" <neq name="url_html" value="1">disabled</neq>/> <input type="button" class="bginput" value="一键生成地图" onClick="window.location='?s=Admin/Html/Maps';"/> </td></tr>
+<tr class="tr"><td colspan="2" >生成影视列表：<select name="msid"><option value="0">全部分类</option><volist name="list_channel_video" id="gxcms"><option value="{$gxcms.id}">{$gxcms.cname}</option><volist name="gxcms['son']" id="gxcms"><option value="{$gxcms.id}">├ {$gxcms.cname}</option></volist></volist></select> <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Videoshow';" <neq name="url_html_channel" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td width="38%" >生成影视内容：<select name="mrid"><option value="0">全部影片</option><volist name="list_channel_video" id="gxcms"><option value="{$gxcms.id}">{$gxcms.cname}</option><volist name="gxcms['son']" id="gxcms"><option value="{$gxcms.id}">├ {$gxcms.cname}</option></volist></volist></select> <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Videoread';" <neq name="url_html" value="1">disabled</neq>/></td>
+  <td width="62%" >生成影视按时间：<select name="mday"><option value="1">当天</option><option value="2">1天内</option><option value="3">2天内</option><option value="4">3天内</option><option value="5">4天内</option><option value="6">5天内</option><option value="8">7天内</option><option value="31">30天内</option></select> <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Videoday';" <neq name="url_html" value="1">disabled</neq>/></td>
+</tr> 
+<tr class="tr"><td colspan="2" >生成新闻分类：<select name="asid"><option value="0">全部分类</option><volist name="list_channel_info" id="gxcms"><option value="{$gxcms.id}">{$gxcms.cname}</option><volist name="gxcms['son']" id="gxcms"><option value="{$gxcms.id}">├ {$gxcms.cname}</option></volist></volist></select> <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Infoshow';" <neq name="url_html_channel" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td >生成新闻内容：<select name="arid"><option value="0">全部新闻</option><volist name="list_channel_info" id="gxcms"><option value="{$gxcms.id}">{$gxcms.cname}</option><volist name="gxcms['son']" id="gxcms"><option value="{$gxcms.id}">├ {$gxcms.cname}</option></volist></volist></select> <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Inforead';" <neq name="url_html" value="1">disabled</neq>/></td>
+  <td >生成新闻按时间：<select name="aday"><option value="1">当天</option><option value="2">1天内</option><option value="3">2天内</option><option value="4">3天内</option><option value="5">4天内</option><option value="6">5天内</option><option value="8">7天内</option><option value="31">30天内</option></select> <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Infoday';" <neq name="url_html" value="1">disabled</neq>/></td>
+</tr>
+<tr class="tr"><td colspan="2" >生成专题列表：<input type="button" value="开始生成"  class="bginput" onClick="window.location='?s=Admin/Html/Specialshow';" <neq name="url_html_channel" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td colspan="2" >生成专题内容：<input type="button" value="开始生成" class="bginput" onClick="window.location='?s=Admin/Html/Specialread';" <neq name="url_html" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td colspan="2" >百度SiteMap： 总输出<input id="baidu" name="baiduall" type="text" size="5" maxlength="5" value="500" style="text-align:center">条 每页输出<input id="baidu" name="baidu" type="text" size="5" maxlength="5" value="100" style="text-align:center">条 <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Mapbaidu';" <neq name="url_html" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td colspan="2" >谷歌SiteMap： 总输出<input id="google" name="googleall" type="text" size="5" value="500" maxlength="5" style="text-align:center">条 每页输出<input id="google" name="google" type="text" size="5" maxlength="5" value="100" style="text-align:center">条 <input type="submit" value="开始生成" class="bginput" onClick="gxform.action='?s=Admin/Html/Mapgoogle';" <neq name="url_html" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td colspan="2" >RSS订阅文件：总输出<input id="rss" name="rss" type="text" size="5" maxlength="5" value="50" style="text-align:center">条 <input name="开始生成" type="submit" class="bginput" onClick="gxform.action='?s=Admin/Html/Maprss';" value="开始生成" <neq name="url_html" value="1">disabled</neq>/></td></tr>
+<tr class="tr"><td colspan="2" >TOP排行榜单：<input id="top" name="top" type="submit" class="bginput" onClick="gxform.action='?s=Admin/Html/Maptop';" value="开始生成" <neq name="url_html" value="1">disabled</neq>/></td></tr>
+</form>
+</table>
+<include file="footer" />
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>详情</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<head>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
+<tr><td class="dialog-content" style="white-space:normal;">{$content|htmlspecialchars|remove_xss}</td></tr>
+<tr><td class="tr ct"><eq name="status" value="1"><a href="?s=Admin/Guestbook/Status/id/{$id}/sid/0" title="已通过审核,点击取消审核">已审</a><else /><a href="?s=Admin/Guestbook/Status/id/{$id}/sid/1" title="还没通过审核,点击通过审核"><font color="red">待审</font></a></eq> <a href="?s=Admin/Guestbook/Add/id/{$id}" title="点击修改数据" target="_parent">修改</a> <a href="?s=Admin/Guestbook/Del/id/{$id}" onClick="return confirm('确定删除该数据吗?')" title="点击删除数据" target="_parent">删除</a></td></td></tr>
+</table>
+</body>
+</html>

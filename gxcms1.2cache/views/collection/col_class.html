@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>采集影片自定义转换-{&web_name}</title>
+<link rel='stylesheet' type='text/css' href='./views/css/admin_style.css'>
+<link rel='stylesheet' type='text/css' href='./views/css/collect.css'>
+<link rel='stylesheet' type='text/css' href='./views/css/dialog.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/jquery.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/admin_all.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/collect.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/dialog.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="./views/js/formvalidator.js"></script>
+<style type="text/css">
+<!--
+.green{ color:#0c8918;}
+.note span{font-weight:600;}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function UpdateOne(tid)
+{ 
+	location = "?s=Admin/CustomCollect/AutoChannel/action/update/cname/"+encodeURI(document.getElementById('cname'+tid).value)+"/reid/"+document.getElementById('reid'+tid).value+"/nid/"+document.getElementById('nid'+tid).value+"/id/"+tid;
+}
+function DeleteOne(tid)
+{
+	location = "tags_main.php?action=delete&ids="+tid;
+}
+-->
+</script>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table">
+<tr>
+  <td colspan="6" class="table_title">
+  <ul>
+  <li><a  href="?s=Admin/CustomCollect/ListShow">采集节点管理</a> </li>
+  <li><a href="?s=Admin/CustomCollect/Add">添加采集节点</a></li>
+    <li><a href="?s=Admin/CustomCollect/Manage/action/import">导入采集规则</a></li>
+  </ul>
+  <!--<span class="fr"><a href="javascript:void(0)" onclick="$('#add_form').show();">添加转换</a></span>-->
+  </td>
+  
+</tr>
+<tr class="tr" id='search'>
+<form action="?s=Admin/CustomCollect/AutoChannel/" method="post"  name="search" >
+<td colspan="6"><table width="700px" border="0" cellspacing="0" cellpadding="0"  align="left">
+  <tr>
+    <td width="5%"><strong>分类转换查询：</strong></td>
+    <td width="5%">栏目：</td>
+    <td width="25%"><input type="text" name="cname" value="{$list['search']['cname']}"/></td>
+    <td width="10%">对应系统栏目：</td>
+    <td width="20%">
+    <select  name="reid">
+<option value="">选择分类</option>
+<volist name="channel_tree" id="gxcms">
+<option value="{$gxcms.id}" <eq name="gxcms.id" value="$list['search']['reid']">selected</eq>>{$gxcms.cname}</option>
+<volist name="gxcms['son']" id="gxcms">
+<option value="{$gxcms.id}" <eq name="gxcms.id" value="$list['search']['reid']">selected</eq>>├ {$gxcms.cname}</option>
+</volist></volist>
+</select>
+</td>
+    <td width="10%">所属采集节点项目:</td>
+    <td width="20%">
+    <select name="nid">
+    <option value="0">所有节点项目</option>
+    <volist name="nodetree" id="node">
+<option value="{$node.id}" <eq name="node.id" value="$list['search']['nid']">selected</eq>>{$node.name}</option>
+</volist>
+    </select></td>
+    <td width="5%"><input type="submit" name='search' value="查 询"/></td>
+  </tr>
+</table>
+</td>
+</form>
+</tr>
+<!--<tr class="tr"> <td colspan="6"><div class="note" >分类转换规则：1、先自动匹配系统栏目分类，匹配不成功则继续进行 。<BR>2、检测由此页面设置的分类规则（优先级:所属节点>所有节点项目）。3、模糊匹配前两个字符。<BR></div></td></tr>-->
+<notempty name="list.cache"><tr class="tr"> <td colspan="6"><div class="note" ><span class="green">温馨提示<br> </span>待转换分类：<volist name='list.cache' id='c'>节点{$c.1}中<span>{$c.0}</span>|</volist></div></td></tr></notempty>
+<tr class="tr" id='add_form'>
+<form action="?s=Admin/CustomCollect/AutoChannel/action/add" method="post"  name="addform" >
+<td colspan="6">
+<table width="700px" border="0" cellspacing="0" cellpadding="0"  align="center">
+
+  <tr>
+    <td width="5%"><strong>添加分类转换：</strong></td>
+    <td width="5%">栏目：</td>
+    <td width="25%"><input type="text" name="cname"/></td>
+    <td width="10%">对应系统栏目：</td>
+    <td width="20%">
+    <select  name="reid">
+<option value="">选择分类</option>
+<volist name="channel_tree" id="gxcms">
+<option value="{$gxcms.id}" >{$gxcms.cname}</option>
+<volist name="gxcms['son']" id="gxcms">
+<option value="{$gxcms.id}" >├ {$gxcms.cname}</option>
+</volist></volist>
+</select>
+</td>
+    <td width="10%">所属采集节点项目:</td>
+    <td width="20%">
+    <select name="nid">
+    <option value="0">所有节点项目</option>
+    <volist name="nodetree" id="node">
+<option value="{$node.id}" <eq name="node.id" value="$vo.nid">selected</eq>>{$node.name}</option>
+</volist>
+    </select></td>
+    <td width="5%"><input type="submit"  value="添 加"/></td>
+  </tr>
+</table>
+</td>
+</form>
+</tr>
+
+<form action="" method="post" id="gxform" name="gxform">
+<tr align="center" class="list_head">
+<td width="2%"></td>
+<td width='5%'>ID</td>
+<td width='20%'>栏目</td>
+
+<td width='15%'>对应系统栏目</td>
+<td width='15%'>所属节点项目</td>
+<td width='15%'></td>
+</tr>
+<volist name='list.arr' id='vo'>
+<tr class="tr" align="center">
+<td  width="2%"><input name='ids[]' type='checkbox' value='{$vo.id}' class="noborder"></td>
+<td  width='5%'>{$vo.id}</td>
+<td  width='20%'><input type="text" value="{$vo.cname}" name="cname"  id="cname{$vo.id}"/></td>
+<td  width='15%'>
+<select id="reid{$vo.id}">
+<option value="">所有分类</option>
+<volist name="channel_tree" id="gxcms">
+<option value="{$gxcms.id}" <eq name="gxcms.id" value="$vo.reid">selected</eq>>{$gxcms.cname}</option>
+<volist name="gxcms['son']" id="gxcms">
+<option value="{$gxcms.id}" <eq name="gxcms.id" value="$vo.reid">selected</eq>>├ {$gxcms.cname}</option>
+</volist></volist>
+</select>
+</td>
+<td  width='15%'>
+<select id="nid{$vo.id}">
+<option value="0">所有节点项目</option>
+<volist name="nodetree" id="node">
+<option value="{$node.id}" <eq name="node.id" value="$vo.nid">selected</eq>>{$node.name}</option>
+</volist>
+</select></td>
+<td class="td" id='action'><a href='javascript:UpdateOne({$vo.id});'>[更新]</a><a href="?s=Admin/CustomCollect/AutoChannel/action/del/id/{$vo.id}"  onClick="return confirm('确定删除该视频吗?')" title="点击删除影片">删除</a></td>
+</tr>
+</volist>
+
+<tr class="tr"><td colspan="6" class="pages">{$list['pagelist']['listpages']}</td></tr>
+</form>
+</table>
+<include file="../admin/footer" />
+</body>
+</html>
