@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:text/html;charset=UTF-8");
+ini_set( "display_errors ",   "On ");
+error_reporting(E_ALL); 
 echo "部分函数测试";
 $t =  "c:/ccc后缀名获取../h.txt";
 echo strrchr($t,".");
@@ -26,24 +28,26 @@ function buble_sort($arr){
 
 //快速排序
 function quick_sort($arr){
-    $n = count($arr);
-    if($n<=1) return $arr;
-    $key = $arr[0];
-    $left_arr = array();
-    $right_arr = array();
-    for($i = 1;$i<$n;$i++)
-    {
-        if($arr[$i]<=$key)
-            $left_arr[] = $arr[$i];
-        else
-            $right_arr[] = $arr[$i];
-    }
-    $left_arr = quick_sort($left_arr);
-    $right_arr = quick_sort($right_arr);
-    return array_merge($left_arr,array($key),$right_arr);
+   $n = count($arr);
+   if($n<=1) return $arr;
+        $k = $arr[0];
+        $left[] = array();
+        $right[] = array();
+   for($i=1;$i<$n;$i++){
+        if($arr[$i]<=$k){ 
+            $left[]=$arr[$i];
+        
+       }else{
+            $right[] = $arr[$i];
+        }
+   }
+   $left = quick_sort($left);
+
+   $right = quick_sort($right);
+   return array_merge($left,array($k),$right); 
 }
-$rs = quick_sort($tarr);
-var_dump($rs);
+//$rs = quick_sort($tarr);
+//var_dump($rs);
 
 
 
@@ -81,9 +85,9 @@ function seq_sch($arr,$n,$k){
 
 //var_dump(bin_sch($tarr,6,9,5));
 
-var_dump(bin_sch($rs,0,10,5));
+//var_dump(bin_sch($rs,0,10,5));
 
-var_dump(seq_sch($rs,5,5));
+//var_dump(seq_sch($rs,5,5));
 
 
 function get_count(){
