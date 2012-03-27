@@ -9,8 +9,15 @@ $tmp2 = file_get_contents('b.jpg');
 file_put_contents('a.jpg', $tmp1);
 //file_put_contents('/b.jpg', $tmp1);
 
+printf("%.2d\n",42);
+echo '/';
+printf("%1.2f\n",42);
+echo '/';
+printf("%1.2u\n",42);
+echo '/';
+echo '<br>';
 var_dump(isSameFile('a.jpg','b.jpg'));
-
+echo count('123');
 
 
 function isSameFile($a,$b){
@@ -21,6 +28,46 @@ function isSameFile($a,$b){
 	}
 
 }
+//Input limit double-ende queue
+class DoubleEndedQueue1 {
+var $queue = array();
+function add($var){
+    return array_push($this->queue, $var);
+}
+function frontRemove(){
+    return array_shift($this->queue);
+}
+function rearRemove(){
+    return array_pop($this->queue);
+}
+}
+
+//Output limit double-ende queue
+class DoubleEndedQueue2 {
+var $queue = array();
+function remove(){
+    return array_pop($this->queue);
+}
+function frontAdd($var){
+    return array_unshift($this->queue, $var);
+}
+function rearAdd($var){
+    return array_push($this->queue, $var);
+}
+}
+
+//Test code
+$q = new DoubleEndedQueue1;
+$q->add('aaa');
+$q->add('bbb');
+$q->add('ccc');
+$q->add('ddd');
+
+echo $q->frontRemove();
+echo "<br>";
+echo $q->rearRemove();
+echo "<br>";
+print_r($q->queue);
 
 
 

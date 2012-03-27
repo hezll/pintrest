@@ -1,1 +1,13 @@
-asdfsadf______git
+asdfsadf______git$_SERVER['argv'][3]_SERVER['argv'][3]
+
+$islock = flock($fp,LOCK_EX);
+
+if($islock==false)
+{
+	
+	echo 'no';
+}else{
+	// do someting;
+	flock($fp,LOCK_UN);
+
+}
